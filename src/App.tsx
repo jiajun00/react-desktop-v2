@@ -8,8 +8,8 @@ function App() {
   return (
     <div className={styles.App}>
       <Routes>
-        <Route path="/" element={<Desktop />}></Route>
-        <Route path="/apps" element={<Apps />}></Route>
+        <Route path="/" element={<Desktop />}/>
+        <Route path="/apps" element={<Apps />}/>
       </Routes>
     </div>
   );
