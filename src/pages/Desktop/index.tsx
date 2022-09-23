@@ -1,5 +1,7 @@
 import React from "react"
-import Framework from "./Framework";
+import Desk from "./Desk";
+import StartToolsBar from "./StartToolsBar";
+import styles from "./index.module.scss";
 
 interface Props {
 
@@ -7,14 +9,10 @@ interface Props {
 
 const Desktop: React.FC<Props> = () => {
   return (
-    <Framework
-      deskNode={
-        <div>desk</div>
-      }
-      startBarNode={
-        <div>start</div>
-      }
-    />
+    <div className={styles.desktopFramework}>
+      <Desk/>
+      <StartToolsBar/>
+    </div>
   )
 }
 

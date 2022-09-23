@@ -2,14 +2,12 @@ import React from "react"
 import styles from './index.module.scss'
 
 interface Props {
-  children: React.ReactNode
 }
 
 const StartToolsBar: React.FC<Props> = (props) => {
-  const {children} = props
+  const {} = props
   return (
     <div className={styles.startToolsBar}>
-      {children}
     </div>
   )
 }
