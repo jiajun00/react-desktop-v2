@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "./App.module.scss";
-import { Routes, Route } from "react-router-dom";
-import Desktop from "./pages/Desktop";
-import Apps from "./pages/Apps";
+import React from 'react'
+import styles from './App.module.scss'
+import { Routes, Route } from 'react-router-dom'
+import Desktop from './pages/Desktop'
+import Apps from './pages/Apps'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Route path="/apps" element={<Apps />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,3 @@
+prettier:
+  windows: Ctrl + Alt + Shift + P
+  macOS: Alt + Shift + Cmd + P
