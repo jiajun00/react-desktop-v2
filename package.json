@@ -12,7 +12,7 @@
     "lint-staged": "lint-staged",
     "lint:style": "stylelint --fix \"src/**/*.{css,less,scss}\"",
     "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json|md)\"",
-    "start": "concurrently  \"npm run format\" \"npm run start\""
+    "start": "npm run dev"
   },
   "lint-staged": {
     "*.+(js|jsx)": [
