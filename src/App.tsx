@@ -6,7 +6,7 @@ import Apps from './pages/Apps'
 
 function App() {
   return (
-    <div className={styles.App}>
+    <div className={styles.app}>
       <Routes>
         <Route path="/" element={<Desktop />} />
         <Route path="/apps" element={<Apps />} />
