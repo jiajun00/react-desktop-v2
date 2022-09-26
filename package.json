@@ -7,6 +7,7 @@
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
+    "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --fix --ext .js,.ts,.tsx,.jsx src",
     "lint-staged": "lint-staged",
     "lint:style": "stylelint --fix \"src/**/*.{css,less,scss}\"",
