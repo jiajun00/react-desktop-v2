@@ -7,9 +7,9 @@
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "lint": "eslint --fix --ext .js,.ts,.tsx,.jsx src",
+    "lint:js": "eslint --fix --ext .js,.ts,.tsx,.jsx src",
     "lint-staged": "lint-staged",
-    "stylelint": "stylelint --fix \"src/**/*.{css,less,scss}\"",
+    "lint:style": "stylelint --fix \"src/**/*.{css,less,scss}\"",
     "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json|md)\"",
     "start": "concurrently  \"npm run format\" \"npm run start\""
   },

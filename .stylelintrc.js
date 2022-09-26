@@ -9,6 +9,10 @@ module.exports = {
     'stylelint-scss',
     'stylelint-less'
   ],
+  ignoreFiles: [
+    "build/**/*",
+    "public/**/*"
+  ],
   rules: {
     "no-empty-source": null,
     "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
