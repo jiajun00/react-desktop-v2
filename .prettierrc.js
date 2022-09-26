@@ -1,6 +1,4 @@
 module.exports = {
-  trailingComma: 'es6',
-  // 强制使用单引号
   // 字符串使用单引号
   singleQuote: true,
   // 大括号内的首尾需要空格
@@ -18,5 +16,7 @@ module.exports = {
   // 换行符使用 crlf/lf/auto
   endOfLine: 'lf',
   // 分号
-  semi: false
+  semi: false,
+  // 标签 > 换行
+  bracketSameLine: false,
 }
