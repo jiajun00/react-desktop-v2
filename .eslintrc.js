@@ -29,7 +29,10 @@ module.exports = {
     '@typescript-eslint/semi': ['warn', 'never'],
     'no-console': 'off',
     'no-var': 'error',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [
+      'warn',
+      { extensions: ['.js', '.jsx', 'ts', 'tsx'] }
+    ],
     'react/jsx-uses-react': 2,
     'react/jsx-uses-vars': 2,
     'react/react-in-jsx-scope': 2,
