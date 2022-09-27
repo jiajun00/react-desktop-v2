@@ -4,9 +4,11 @@ module.exports = {
     'react-app',
     'plugin:react/recommended', // 使用来自 @eslint-plugin-react 的推荐规则
     'plugin:@typescript-eslint/recommended', // 使用来自@typescript-eslint/eslint-plugin的推荐规则
-    // "prettier/@typescript-eslint",  // 使用 ESLint -config-prettier 禁用来自@typescript-eslint/ ESLint 与 prettier 冲突的 ESLint 规则
-    'plugin:prettier/recommended'
+    // 'prettier/@typescript-eslint',  // 使用 ESLint -config-prettier 禁用来自@typescript-eslint/ ESLint 与 prettier 冲突的 ESLint 规则
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/recommended'
   ],
+  plugins: ['react', 'react-hooks', 'jsx-a11y'],
   env: {
     browser: true, // 此项指定环境的全局变量，下面的配置指定为浏览器环境
     es6: true,
@@ -22,10 +24,18 @@ module.exports = {
   rules: {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    '@typescript-eslint/no-unused-vars': ['off'],
     semi: ['warn', 'never'],
     '@typescript-eslint/semi': ['warn', 'never'],
     'no-console': 'off',
     'no-var': 'error',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-uses-react': 2,
+    'react/jsx-uses-vars': 2,
+    'react/react-in-jsx-scope': 2,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'jsx-a11y/anchor-is-valid': 0,
     '@typescript-eslint/no-empty-interface': [
       'warn',
       {
