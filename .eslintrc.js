@@ -25,6 +25,7 @@ module.exports = {
         "semi": ["warn", "never"],
         "@typescript-eslint/semi": ["warn", "never"],
         "no-console": "off",
+        "no-var": "error",
         "@typescript-eslint/no-empty-interface": [
             "warn",
             {
