@@ -6,10 +6,12 @@ module.exports = {
     'stylelint-config-standard-scss' // 配置stylelint scss插件
   ],
   plugins: ['stylelint-scss', 'stylelint-less'],
-  ignoreFiles: ['build/**/*', 'public/**/*'],
+  ignoreFiles: ['build/**/*', 'public/**/*', 'src/common/style/**/*'],
   rules: {
     'no-empty-source': null,
     'selector-class-pattern': '^[a-z][a-zA-Z0-9]+$',
+    'color-function-notation': 'legacy',
+    'alpha-value-notation': 'number',
     // 属性的排序
     'order/properties-order': [
       'position',
@@ -20,6 +22,9 @@ module.exports = {
       'z-index',
       'display',
       'justify-content',
+      'flex-flow',
+      'flex-direction',
+      'flex-wrap',
       'align-items',
       'float',
       'clear',
