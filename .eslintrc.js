@@ -33,12 +33,16 @@ module.exports = {
       'warn',
       { extensions: ['.js', '.jsx', 'ts', 'tsx'] }
     ],
+    '@typescript-eslint/ban-ts-comment': 'off',
     'react/jsx-uses-react': 2,
     'react/jsx-uses-vars': 2,
     'react/react-in-jsx-scope': 2,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
     'jsx-a11y/anchor-is-valid': 0,
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
     '@typescript-eslint/no-empty-interface': [
       'warn',
       {

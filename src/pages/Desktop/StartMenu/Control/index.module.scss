@@ -1,0 +1,29 @@
+.control {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 50px;
+  height: 100%;
+}
+
+.controlTools {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-grow: 1;
+}
+
+.icon {
+  padding: 18px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-background1;
+  }
+}
+
+.description {
+  z-index: 10001;
+}
+
+.controlMenu {
+  padding: 10px 18px;
+}

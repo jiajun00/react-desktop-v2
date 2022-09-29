@@ -6,6 +6,11 @@
       "dom.iterable",
       "esnext"
     ],
+    "paths": {
+      "@/*": ["src/*"],
+      "@img/*": ["src/public/img/*"],
+      "@utils/*": ["src/common/utils/*"]
+},
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

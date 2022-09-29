@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# react desktop v2 桌面系统（web版）
+![](https://img.shields.io/badge/react_desktops_v2-0.1.0-green.svg)
+![](https://img.shields.io/badge/build-passing-yellow.svg)
+![](https://img.shields.io/badge/language-typescript-red.svg)
+![](https://img.shields.io/badge/license-MIT-000000.svg)
+![](https://img.shields.io/badge/ECMAScipt-6-orange.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+react-desktops-v2是原项目 [react-desktops](https://gitee.com/jiajun000_admin/react-desktops) 采用react hook的改进版，桌面操作系统前端UI，用了模拟windows桌面元素，包括桌面图标、窗口化子页面管理、开始菜单等组件，兼容主流现代浏览器。 适合快速开发后台管理系统的前端界面、整合企业诸多应用、通过B/S架构集成系统、可作为企业后台应用管理平台。
 
-In the project directory, you can run:
+## 快速开始
 
-### `npm start`
+``git clone https://gitee.com/jiajun000_admin/react-desktop-v2.git``
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 安装依赖
+`npm install`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 启动mock
 
-### `npm test`
+`npm run mock`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 运行
+`npm run dev`
 
-### `npm run build`
+打开chrome浏览器访问 [http://localhost:9080](http://localhost:9080).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 在线演示
+[演示地址]()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 运行截图
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 查看更多
 
-### `npm run eject`
+[开发文档](./docs/main.md)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 相关技术
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+react hook
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+react-router-dom
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+zustand
 
-## Learn More
+ant design
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+axiox
 
-To learn React, check out the [React documentation](https://reactjs.org/).

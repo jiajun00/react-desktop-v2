@@ -1,0 +1,59 @@
+$padding-top: 15px;
+
+.applicationBox {
+  padding: $padding-top 3px 0 5px;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.applicationScroll {
+  overflow-y: auto;
+  width: 100%;
+  height: calc(#{$start-menu-height} - #{$padding-top});
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $scrollbar-thumb1;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.application {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.appBox {
+  margin-bottom: 15px;
+  margin-left: 15px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  width: 160px;
+  height: 100px;
+  background-color: $desk-background2;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-background1;
+  }
+}
+
+.icon {
+  text-align: center;
+}
+
+.iconImg {
+  margin: 20px 0 12px;
+  width: 38px;
+  height: 38px;
+}
+
+.title {
+  font-size: 12px;
+  text-align: center;
+}
