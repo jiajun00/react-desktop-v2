@@ -5,3 +5,4 @@
 /build
 /src/react-app-env.d.ts
 /mock/*
+/src/setupProxy.js
