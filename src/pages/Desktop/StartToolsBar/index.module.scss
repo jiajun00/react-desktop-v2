@@ -25,6 +25,7 @@
   width: 38px;
   height: 38px;
   transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     background: $desk-background2;

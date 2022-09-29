@@ -2,9 +2,7 @@ import React from 'react'
 import styles from './index.module.scss'
 import startImg from '@img/icon/start/home.png'
 
-interface Props {}
-
-const Application: React.FC<Props> = props => {
+const Application: React.FC = () => {
   return (
     <div className={styles.applicationBox}>
       <div className={styles.applicationScroll}>

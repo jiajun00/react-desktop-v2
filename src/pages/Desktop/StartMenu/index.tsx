@@ -3,9 +3,7 @@ import styles from './index.module.scss'
 import Control from './Control'
 import Application from './Application'
 
-interface Props {}
-
-const StartMenu: React.FC<Props> = props => {
+const StartMenu: React.FC = () => {
   return (
     <div className={styles.startMenuBox}>
       <Control />
