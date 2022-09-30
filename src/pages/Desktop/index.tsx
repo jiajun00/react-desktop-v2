@@ -5,12 +5,17 @@ import StartToolsBar from './StartToolsBar'
 import styles from './index.module.scss'
 import StartMenu from './StartMenu'
 import Mask from './Mask'
+import Window from '@/pages/Desktop/Window'
 
 const Desktop: React.FC = () => {
   const showStartMenu = useStore((state: MyState) => state.showStartMenu)
+  const windowList = useStore((state: MyState) => state.windowList)
   return (
     <div className={styles.desktopFramework}>
       <Desk />
+      {windowList.map((window, index) => (
+        <Window key={window.id} window={window} index={index} />
+      ))}
       <StartToolsBar />
       {showStartMenu && <StartMenu />}
       {showStartMenu && <Mask />}
