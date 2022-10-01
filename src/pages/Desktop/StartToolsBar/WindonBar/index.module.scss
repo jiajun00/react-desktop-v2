@@ -1,4 +1,59 @@
+$window-img-padding-horizontal: 8px;
+$window-img-width: 20px;
+
 .windowBarBox {
-  flex-grow: 1;
+  display: flex;
+  width: calc(100% - 112px);
   height: 100%;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  display: none;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+.windowBox {
+  position: relative;
+  display: flex;
+  width: 140px;
+  height: 100%;
+  transition: background-color 0.3s ease-out;
+
+  &:hover {
+    background-color: hsla(0deg, 0%, 100%, 0.3) !important;
+
+    .close {
+      display: block;
+    }
+  }
+}
+
+.active {
+  background-color: hsla(0deg, 0%, 100%, 0.2);
+}
+
+.windowImg {
+  padding: 10px $window-img-padding-horizontal;
+
+  img {
+    width: $window-img-width;
+    height: $window-img-width;
+  }
+}
+
+.windowTitle {
+  overflow: hidden;
+  width: calc(100% - #{$window-img-width + $window-img-padding-horizontal * 2});
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 42px;
+  user-select: none;
 }

@@ -3,8 +3,10 @@ import { MyState } from './index'
 import _ from 'lodash'
 import getId from '@utils/getId'
 
-const win = {
-  id: getId(),
+const id = getId()
+
+const win1 = {
+  id,
   title: '窗口标题名称',
   status: 0,
   style: {
@@ -14,6 +16,20 @@ const win = {
     top: 200,
     left: 100,
     zIndex: 1
+  }
+}
+
+const win2 = {
+  id: getId(),
+  title: '窗口标题名称2',
+  status: 0,
+  style: {
+    display: 'block',
+    width: 800,
+    height: 800,
+    top: 230,
+    left: 130,
+    zIndex: 2
   }
 }
 
@@ -34,6 +50,7 @@ export interface WindowStyle {
 }
 
 export interface WindowSlice {
+  windowActionId: string
   windowList: Window[]
   setWindowList: (windowList: Window[]) => void
   editWindow: (window: Window, id: string) => void
@@ -46,7 +63,8 @@ const windowListSlice = (
   set: StoreApi<MyState>['setState'],
   get: StoreApi<MyState>['getState']
 ) => ({
-  windowList: [win], // 窗口列表
+  windowActionId: id, // 当前正在打开窗口的id
+  windowList: [win1, win2], // 窗口列表
   setWindowList: (windowList: Window[]) => {
     // 设置窗口列表
     set(prev => ({ windowList: windowList }))
