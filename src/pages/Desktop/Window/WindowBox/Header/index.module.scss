@@ -1,0 +1,55 @@
+.headerBox {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid $window-border-color;
+  width: 100%;
+  height: $window-header-height;
+}
+
+.title {
+  flex-grow: 1;
+  line-height: 30px;
+  padding-left: 15px;
+  font-size: 12px;
+  user-select: none;
+  cursor: all-scroll;
+}
+
+.tools {
+  display: flex;
+  flex-direction: row;
+}
+
+.tool {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $desk-background2;
+  }
+}
+
+.full {
+  :global {
+    svg {
+      font-size: 11px;
+    }
+  }
+}
+
+.normal {
+  :global {
+    svg {
+      font-size: 13px;
+    }
+  }
+}
+
+.close {
+  &:hover {
+    background-color: rgb(232, 17, 35) !important;
+  }
+}

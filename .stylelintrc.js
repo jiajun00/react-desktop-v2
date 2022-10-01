@@ -10,6 +10,12 @@ module.exports = {
   rules: {
     'no-empty-source': null,
     'selector-class-pattern': '^[a-z][a-zA-Z0-9]+$',
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global']
+      }
+    ],
     'color-function-notation': 'legacy',
     'alpha-value-notation': 'number',
     // 属性的排序

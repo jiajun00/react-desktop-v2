@@ -1,0 +1,47 @@
+$drag: 8px;
+$shift: -6px;
+
+.windowBox {
+  position: absolute;
+  border: 1px solid $window-border-color;
+  border-radius: 3px;
+  background-color: $window-background;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: calc(100% - #{$window-header-height});
+}
+
+.dragRight {
+  position: absolute;
+  top: 32px;
+  right: $shift;
+  width: $drag;
+  height: calc(100% - #{$drag + $shift} - 32px);
+  cursor: e-resize;
+}
+
+.dragBottom {
+  position: absolute;
+  bottom: $shift;
+  left: 0;
+  width: calc(100% - #{$drag + $shift});
+  height: $drag;
+  cursor: s-resize;
+}
+
+.dragRightBottom {
+  position: absolute;
+  right: $shift;
+  bottom: $shift;
+  width: $drag;
+  height: $drag;
+  cursor: se-resize;
+}
