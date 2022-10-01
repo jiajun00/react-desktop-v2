@@ -13,6 +13,11 @@ $border-color1: #eee;
 
 $scrollbar-thumb1: #999;
 
+$start-tools-bar-height: 48px;
+
 $start-menu-width: 600px;
 $start-menu-height: 550px;
 
+:export {
+  startToolsBarHeight: $start-tools-bar-height
+}

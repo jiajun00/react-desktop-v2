@@ -2,6 +2,8 @@ import React from 'react'
 import WindowContext from '../WindowContext'
 import styles from './index.module.scss'
 import Header from './Header'
+import { WINDOW_STATUS } from '@/common/constants'
+import vars from '@/common/style/vars.scss'
 
 interface Props {
   children: React.ReactNode
@@ -9,16 +11,21 @@ interface Props {
 
 const WindowBox: React.FC<Props> = props => {
   const { window } = React.useContext(WindowContext)
+  const windowStyle = React.useMemo(() => {
+    const cssStyle = { ...window.style }
+    if (window.status === WINDOW_STATUS.MAX) {
+      cssStyle.left = 0
+      cssStyle.top = 0
+      cssStyle.width = '100%'
+      cssStyle.height = `calc(100% - ${vars.startToolsBarHeight})`
+    }
+    if (window.status === WINDOW_STATUS.MIN) {
+      cssStyle.display = 'none'
+    }
+    return cssStyle
+  }, [window.style, window.status])
   return (
-    <div
-      className={styles.windowBox}
-      style={{
-        width: window.width,
-        height: window.height,
-        zIndex: window.zIndex,
-        top: window.top,
-        left: window.left
-      }}>
+    <div className={styles.windowBox} style={windowStyle}>
       <div className={styles.main}>
         <Header />
         <div className={styles.content}>{props.children}</div>

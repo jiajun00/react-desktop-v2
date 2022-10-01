@@ -1,10 +1,9 @@
 import { customAlphabet } from 'nanoid'
 
-const getId = () => {
+const getId = (size = 32) => {
   const dictionary =
     '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-  const nanoid = customAlphabet(dictionary)
-  return nanoid()
+  return customAlphabet(dictionary, size)
 }
 
 export default getId()

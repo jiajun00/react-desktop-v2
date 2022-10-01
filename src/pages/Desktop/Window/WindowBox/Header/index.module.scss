@@ -40,6 +40,14 @@
   }
 }
 
+.normal {
+  :global {
+    svg {
+      font-size: 13px;
+    }
+  }
+}
+
 .close {
   &:hover {
     background-color: rgb(232, 17, 35) !important;
