@@ -43,7 +43,7 @@ $window-img-width: 20px;
 .windowImg {
   padding: 10px $window-img-padding-horizontal;
 
-  img {
+  img, svg {
     width: $window-img-width;
     height: $window-img-width;
   }
