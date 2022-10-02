@@ -22,7 +22,7 @@ const DateTime: React.FC = () => {
   })
   React.useEffect(() => {
     getDateTime()
-  }, [])
+  }, []) // eslint-disable-line
   const { getDateTime } = useMethods({
     getDateTime() {
       const date = new Date()
