@@ -9,12 +9,10 @@ import { ConfigProvider } from 'antd'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ConfigProvider locale={zhCN}>
-        <App />
-      </ConfigProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <ConfigProvider locale={zhCN}>
+      <App />
+    </ConfigProvider>
+  </BrowserRouter>
 )
 reportWebVitals()

@@ -1,16 +1,28 @@
 import React from 'react'
+import { Spin } from 'antd'
 import styles from './App.module.scss'
 import { Routes, Route } from 'react-router-dom'
 import Desktop from './pages/Desktop'
 import Apps from './pages/Apps'
+import getToken from '@utils/getToken'
 
 function App() {
+  const [isLoad, setIsLoad] = React.useState<boolean>(false)
+  React.useEffect(() => {
+    getToken(() => {
+      setIsLoad(true)
+    })
+  }, [])
   return (
     <div className={styles.app}>
-      <Routes>
-        <Route path="/" element={<Desktop />} />
-        <Route path="/apps" element={<Apps />} />
-      </Routes>
+      {isLoad ? (
+        <Routes>
+          <Route path="/" element={<Desktop />} />
+          <Route path="/apps" element={<Apps />} />
+        </Routes>
+      ) : (
+        <Spin size="large" />
+      )}
     </div>
   )
 }

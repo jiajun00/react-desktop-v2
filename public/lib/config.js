@@ -1,4 +1,5 @@
 window.global = {
   title: 'desktop',
-  apiUrl: '',
+  apiUrl: 'http://localhost:3080',
+  timeout: 30000
 };

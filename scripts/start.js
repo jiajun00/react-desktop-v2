@@ -4,6 +4,9 @@
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
+// 如果需要使用本地代理联调,则需要将 PROXY_ENV 改为 proxy
+process.env.PROXY_ENV = 'proxy'
+
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.

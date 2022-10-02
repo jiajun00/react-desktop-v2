@@ -1,0 +1,49 @@
+$app-width: 40px;
+
+.apps {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  width: 100%;
+  height: calc(100% - #{$start-tools-bar-height});
+  align-content: flex-start;
+}
+
+.appBox {
+  margin-right: 25px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  width: 70px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-background2;
+  }
+}
+
+.appImg {
+  padding-top: 4px;
+  padding-bottom: 6px;
+  text-align: center;
+
+  img {
+    width: $app-width;
+    height: $app-width;
+  }
+
+  svg {
+    width: $app-width + 2px;
+    height: $app-width + 2px;
+  }
+}
+
+.appTitle {
+  overflow: hidden;
+  padding-bottom: 4px;
+  height: 34px;
+  font-weight: lighter;
+  text-align: center;
+  line-height: 15px;
+}
