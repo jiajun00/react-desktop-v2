@@ -84,3 +84,17 @@ declare module '*.module.less' {
   const resource: { readonly [key: string]: string }
   export = resource
 }
+
+declare interface Window {  //window对象属性
+  global: {
+    title: string,
+    apiUrl: string,
+    timeout: number
+  },
+  requestCancel: any,
+  top: {
+    location: {
+      href: string
+    }
+  }
+}

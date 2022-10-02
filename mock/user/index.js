@@ -1,6 +1,6 @@
 const Mock = require("mockjs")
 const express = require("express")
-const router = express.Router();
+const router = express.Router()
 
 router.use("/getUser",function (req, res) {
   //调用mock方法模拟数据
@@ -26,8 +26,8 @@ router.use("/getUser",function (req, res) {
 
 router.use("/getToken",function (req, res) {
   //调用mock方法模拟数据
-  const data = Mock.mock({token: Mock.Random.string( 32 )});
-  return res.json(data);
+  const data = Mock.mock({token: Mock.Random.string( 32 )})
+  return res.json(data)
 })
 
-module.exports = router;
+module.exports = router

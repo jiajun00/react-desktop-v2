@@ -1,4 +1,4 @@
-const express = require("express")
+const express = require('express')
 const app = express();
 const bodyParser = require('body-parser');
 
@@ -10,15 +10,17 @@ app.use(bodyParser.urlencoded({
 const router = express.Router();
 
 app.post('/', function(req, res) {
-  res.send('this is my mock demo');
+  res.send('this is my mock demo')
 });
+
+router.use('/', require('./login/index'))
 
 app.get('/', function(req, res) {
-  res.send('this is my mock get demo');
+  res.send('this is my mock get demo')
 });
 
-router.use("/user/", require('./user/index'));
+router.use('/user/', require('./user/index'))
 
-app.use("/api",router)
+app.use('/api', router)
 
 app.listen(3080)
