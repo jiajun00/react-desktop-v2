@@ -43,6 +43,7 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-empty-interface': [
       'warn',
       {
