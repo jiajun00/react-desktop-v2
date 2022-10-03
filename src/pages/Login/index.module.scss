@@ -1,0 +1,28 @@
+.bg {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.form {
+  width: 400px;
+}
+
+.loginForm {
+  padding: 8px 10px;
+}
+
+.loginFormForgot {
+  float: right;
+}
+
+.loginFormRemember {
+  float: left;
+}
+
+.loginFormButton {
+  width: 100%;
+}

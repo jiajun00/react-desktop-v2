@@ -9,6 +9,7 @@ const id = getId()
 
 const win1 = {
   id,
+  appId: 1,
   title: '窗口标题名称',
   status: 0,
   style: {
@@ -27,6 +28,7 @@ const win1 = {
 
 const win2 = {
   id: getId(),
+  appId: 2,
   title: '窗口标题名称2',
   status: 0,
   style: {
@@ -45,6 +47,7 @@ const win2 = {
 
 export interface Window {
   id: string
+  appId: number
   title: string
   status: number
   style: WindowStyle
@@ -79,7 +82,7 @@ const windowListSlice = (
   windowList: [win1, win2], // 窗口列表
   setWindowList: (windowList: Window[]) => {
     // 设置窗口列表
-    set(prev => ({ windowList: windowList }))
+    set(() => ({ windowList: windowList }))
   },
   editWindow: (window: Window, id: string) => {
     // 窗口属性编辑
@@ -104,7 +107,7 @@ const windowListSlice = (
     })
   },
   setWindowActionId: (id: string) => {
-    set(prev => ({ windowActionId: id }))
+    set(() => ({ windowActionId: id }))
   },
   closeWindow: (id: string) => {
     set(({ windowList, windowActionId }) => {

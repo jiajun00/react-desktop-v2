@@ -1,35 +1,23 @@
 import React from 'react'
 import styles from './index.module.scss'
 import startImg from '@img/icon/start/home.png'
+import useStore, { MyState } from '@/store'
+import ImageComponent from '@/components/ImageComponent'
 
 const Application: React.FC = () => {
+  const startMenuList = useStore((state: MyState) => state.startMenuList)
   return (
     <div className={styles.applicationBox}>
       <div className={styles.applicationScroll}>
         <div className={styles.application}>
-          <div className={styles.appBox}>
-            <div className={styles.icon}>
-              <img className={styles.iconImg} src={startImg} alt="app" />
+          {startMenuList.map(app => (
+            <div key={app.id} className={styles.appBox}>
+              <div className={styles.icon}>
+                <ImageComponent className={styles.iconImg} image={app.image} />
+              </div>
+              <div className={styles.title}>{app.title}</div>
             </div>
-            <div className={styles.title}>应用名称</div>
-          </div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
-          <div className={styles.appBox}></div>
+          ))}
         </div>
       </div>
     </div>
