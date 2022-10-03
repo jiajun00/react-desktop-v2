@@ -93,9 +93,8 @@ const windowListSlice = (
       let newWindowList
       let windowId
       if (windowIndex >= 0) {
-        const window = windowList[windowIndex]
         newWindowList = resetWindowListZIndex(windowList, windowIndex)
-        windowId = window.id
+        windowId = windowList[windowIndex].id
       } else {
         newWindowList = _.cloneDeep(windowList)
         const windowNum = windowList.length
@@ -151,7 +150,6 @@ const windowListSlice = (
       const res = { windowActionId: id, windowList }
       // 重新排序zIndex
       if (type === 1) {
-        const newWindowList = _.cloneDeep(windowList)
         const windowIndex = windowList.findIndex(row => row.id === id)
         res.windowList = resetWindowListZIndex(windowList, windowIndex)
       }
