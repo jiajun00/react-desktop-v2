@@ -20,7 +20,7 @@ const WindowBar: React.FC = () => {
           className={classNames(styles.windowBox, {
             [styles.active]: window.id === windowActionId
           })}
-          onClick={() => setWindowActionId(window.id)}>
+          onClick={() => setWindowActionId(window.id, 1)}>
           <div className={styles.windowImg}>
             <ImageComponent image={window.image} />
           </div>
