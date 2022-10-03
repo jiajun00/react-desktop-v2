@@ -96,5 +96,6 @@ declare interface Window {  //window对象属性
     location: {
       href: string
     }
-  }
+  },
+  removeEventListener(name: string, func: any): void
 }

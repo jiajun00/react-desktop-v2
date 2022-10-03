@@ -55,7 +55,7 @@ export interface WindowSlice {
   windowList: Window[]
   openWindow: (app: App) => void
   setWindowList: (windowList: Window[]) => void
-  editWindow: (window: Window, id: string) => void
+  editWindow: (window: Window) => void
   setWindowStatus: (status: number, id: string) => void
   setWindowActionId: (id: string, type?: number) => void
   closeWindow: (id: string) => void
@@ -123,10 +123,10 @@ const windowListSlice = (
     set(() => ({ windowList: windowList }))
   },
   // 窗口属性编辑
-  editWindow: (window: Window, id: string) => {
+  editWindow: (window: Window) => {
     set(({ windowList }) => {
       const list = _.cloneDeep(windowList)
-      const windowIndex = list.findIndex(row => row.id === id)
+      const windowIndex = list.findIndex(row => row.id === window.id)
       list[windowIndex] = window
       return {
         windowList: list
