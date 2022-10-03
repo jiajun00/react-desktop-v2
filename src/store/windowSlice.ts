@@ -2,7 +2,6 @@ import { StoreApi } from 'zustand'
 import { MyState } from './index'
 import _ from 'lodash'
 import getId from '@utils/getId'
-import logoImg from '@img/icon/start/home.png'
 import type { Image } from '@/components/ImageComponent'
 import { App } from '@/store/deskSlice'
 import { WINDOW_STATUS } from '@/common/constants'
@@ -14,22 +13,6 @@ const defaultWindowStyle = {
   top: 200,
   left: 100,
   zIndex: 1000
-}
-
-const id = getId()
-
-const win1 = {
-  id,
-  appId: 99,
-  title: '窗口标题名称',
-  status: 0,
-  style: {
-    ...defaultWindowStyle
-  },
-  image: {
-    type: 0,
-    src: logoImg
-  }
 }
 
 export interface Window {
@@ -84,11 +67,11 @@ const windowListSlice = (
   set: StoreApi<MyState>['setState'],
   get: StoreApi<MyState>['getState']
 ) => ({
-  windowActionId: id, // 当前正在打开窗口的id
-  windowList: [win1], // 窗口列表
+  windowActionId: '', // 当前正在打开窗口的id
+  windowList: [], // 窗口列表
   // 打开窗口
   openWindow: (app: App) => {
-    set(({ windowList, setWindowActionId }) => {
+    set(({ windowList }) => {
       const windowIndex = windowList.findIndex(row => row.appId === app.id)
       let newWindowList
       let windowId
@@ -114,8 +97,7 @@ const windowListSlice = (
         newWindowList.push(window)
         windowId = window.id
       }
-      setWindowActionId(windowId)
-      return { windowList: newWindowList }
+      return { windowList: newWindowList, windowActionId: windowId }
     })
   },
   // 设置窗口列表
@@ -151,7 +133,9 @@ const windowListSlice = (
       // 重新排序zIndex
       if (type === 1) {
         const windowIndex = windowList.findIndex(row => row.id === id)
-        res.windowList = resetWindowListZIndex(windowList, windowIndex)
+        const newWindowList = resetWindowListZIndex(windowList, windowIndex)
+        newWindowList[windowIndex].status = WINDOW_STATUS.NORMAL
+        res.windowList = newWindowList
       }
       return res
     })
