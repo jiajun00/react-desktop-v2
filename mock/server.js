@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 const router = express.Router();
 
 app.post('/', function(req, res) {
-  res.send('this is my mock demo')
+  res.send('this is my mock post demo')
 });
 
 router.use('/', require('./login/index'))

@@ -1,7 +1,8 @@
 function result(data, code = 0) {
   return {
     data: data,
-    code: code
+    code: code,
+    msg: 'XXX'
   }
 }
 

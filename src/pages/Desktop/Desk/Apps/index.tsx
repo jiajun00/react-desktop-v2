@@ -4,10 +4,10 @@ import ImageComponent from '@/components/ImageComponent'
 import useStore, { MyState } from '@/store'
 
 const Apps: React.FC = () => {
-  const AppList = useStore((state: MyState) => state.appList)
+  const appList = useStore((state: MyState) => state.appList)
   return (
     <div className={styles.apps}>
-      {AppList.map(app => (
+      {appList.map(app => (
         <div key={app.id} className={styles.appBox}>
           <div className={styles.appImg}>
             <ImageComponent image={app.image} />

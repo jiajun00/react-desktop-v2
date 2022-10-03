@@ -1,10 +1,19 @@
 import { StoreApi } from 'zustand'
 import { MyState } from './index'
+import { Image } from '@/components/ImageComponent'
+
+export interface StartMenu {
+  id: number
+  title: string
+  image: Image
+}
 
 export interface StartMenuSlice {
   showStartMenu: boolean
   setShowStartMenu: (value: boolean) => void
   toggleShowStartMenu: () => void
+  startMenuList: StartMenu[]
+  setStartMenuList: (value: StartMenu[]) => void
 }
 
 const startMenuSlice = (
@@ -17,6 +26,10 @@ const startMenuSlice = (
   },
   toggleShowStartMenu: () => {
     set(state => ({ showStartMenu: !state.showStartMenu }))
+  },
+  startMenuList: [] as StartMenu[],
+  setStartMenuList: (value: StartMenu[]) => {
+    set({ startMenuList: value })
   }
 })
 

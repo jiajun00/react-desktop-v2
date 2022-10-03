@@ -167,8 +167,8 @@ export const uploadData = (
  * @param all 请求无论成功失败都会调用的一个回调，用于如loading的显示与消除
  * @param errorFun 错误的回调
  */
-export interface Callback {
-  (data: any): void
+export interface Callback<T = any> {
+  (data: T): void
 }
 export const post = (
   api: string,

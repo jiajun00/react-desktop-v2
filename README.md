@@ -12,7 +12,7 @@ react-desktops-v2是原项目 [react-desktops](https://gitee.com/jiajun000_admin
 
 ``git clone https://gitee.com/jiajun000_admin/react-desktop-v2.git``
 
-### 安装依赖
+### 安装依赖 （node v14.20.0 / npm 6.14.17)
 `npm install`
 
 ### 启动mock

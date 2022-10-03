@@ -15,6 +15,6 @@ export interface LoginData {
   code: number
 }
 
-export const login = (param: LoginParam, success: Callback) => {
+export const login = (param: LoginParam, success: Callback<LoginData>) => {
   post('/api/login', param, success)
 }

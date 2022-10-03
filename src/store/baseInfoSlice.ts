@@ -12,9 +12,16 @@ export interface UserInfo {
   gender: number
 }
 
+export interface RoleInfo {
+  id: string
+  name: string
+}
+
 export interface BaseInfoSlice {
   userInfo: UserInfo
   setUserInfo: (value: UserInfo) => void
+  roleInfo: RoleInfo
+  setRoleInfo: (value: RoleInfo) => void
 }
 
 const baseInfoSlice = (
@@ -24,6 +31,10 @@ const baseInfoSlice = (
   userInfo: {} as UserInfo,
   setUserInfo: (value: UserInfo) => {
     set(() => ({ userInfo: value }))
+  },
+  roleInfo: {} as RoleInfo,
+  setRoleInfo: (value: RoleInfo) => {
+    set(() => ({ roleInfo: value }))
   }
 })
 

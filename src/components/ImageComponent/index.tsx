@@ -5,6 +5,7 @@ import { IMAGE_TYPE } from '@/common/constants'
 interface Props {
   image: Image
   style?: React.CSSProperties
+  className?: any
 }
 
 export interface Image {
@@ -13,15 +14,22 @@ export interface Image {
   name?: string
 }
 
-const ImageComponent: React.FC<Props> = ({ image, style }) => {
+const ImageComponent: React.FC<Props> = ({ image, style, className }) => {
   let content = <></>
   if (image.type === IMAGE_TYPE.IMG) {
-    content = <img src={image.src} alt={image.src} style={style} />
+    content = (
+      <img
+        src={image.src}
+        className={className}
+        alt={image.src}
+        style={style}
+      />
+    )
   }
   if (image.type === IMAGE_TYPE.ANTD && image.name) {
     // @ts-ignore
-    const Icon = Adi[image.name] || <Adi.BorderOutlined />
-    content = <Icon style={style} />
+    const Icon = Adi[image.name] || <Adi.BorderOutlined className={className} />
+    content = <Icon className={className} style={style} />
   }
   return content
 }
