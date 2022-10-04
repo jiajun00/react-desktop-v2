@@ -6,6 +6,7 @@ import { WINDOW_STATUS, WINDOW_DRAG, WINDOW_MIN } from '@/common/constants'
 import vars from '@/common/style/vars.scss'
 import useMethods from '@utils/useMethods'
 import useStore, { MyState } from '@/store'
+import Content from '@/pages/Desktop/Window/WindowBox/Content'
 
 interface Props {
   children: React.ReactNode
@@ -21,6 +22,7 @@ const WindowBox: React.FC<Props> = props => {
   const { window: windowObj } = React.useContext(WindowContext)
   const editWindow = useStore((state: MyState) => state.editWindow)
   const windowRef = React.useRef<HTMLDivElement>(null)
+  const [loading, setLoading] = React.useState<boolean>(false)
   const [drag, setDrag] = React.useState<Drag>({
     startX: 0,
     startY: 0,
@@ -131,8 +133,9 @@ const WindowBox: React.FC<Props> = props => {
   return (
     <div className={styles.windowBox} ref={windowRef} style={windowStyle}>
       <div className={styles.main} style={{ zIndex: windowStyle.zIndex + 1 }}>
-        <Header windowRef={windowRef} />
-        <div className={styles.content}>{props.children}</div>
+        <Header setLoading={setLoading} windowRef={windowRef} />
+        {/* eslint-disable-next-line react/no-children-prop */}
+        <Content loading={loading} children={props.children} />
         {windowObj.status === WINDOW_STATUS.NORMAL && (
           <>
             <div
