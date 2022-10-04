@@ -5,7 +5,7 @@ import StartToolsBar from './StartToolsBar'
 import styles from './index.module.scss'
 import StartMenu from './StartMenu'
 import Mask from './Mask'
-import Window from '@/pages/Desktop/Window'
+import Window from './Window'
 
 const Desktop: React.FC = () => {
   const showStartMenu = useStore((state: MyState) => state.showStartMenu)

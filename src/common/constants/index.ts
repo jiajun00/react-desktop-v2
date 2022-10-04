@@ -9,11 +9,20 @@ const WINDOW_STATUS = {
 const WINDOW_DRAG = {
   RIGHT: 1,
   BOTTOM: 2,
-  RIGHT_BOTTOM: 3
+  RIGHT_BOTTOM: 3,
+  TITLE: 4
 }
 
 // 窗口最小宽高
 const WINDOW_MIN = 300
+
+// 窗口打开方式
+const WINDOW_OPEN_WITH = {
+  IFRAME: 0, // iframe打开
+  COMPONENT: 1, // 组件引用
+  BLANK: 2, // 新标签
+  INLINE: 3 // 内部跳转
+}
 
 // 图标类型
 const IMAGE_TYPE = {
@@ -35,4 +44,11 @@ const GENDER = {
   SECRECY: 2 // 保密
 }
 
-export { WINDOW_STATUS, IMAGE_TYPE, RESPONSE_CODE, WINDOW_DRAG, WINDOW_MIN }
+export {
+  WINDOW_STATUS,
+  IMAGE_TYPE,
+  RESPONSE_CODE,
+  WINDOW_DRAG,
+  WINDOW_MIN,
+  WINDOW_OPEN_WITH
+}

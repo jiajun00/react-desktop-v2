@@ -9,7 +9,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@img/*": ["src/public/img/*"],
-      "@utils/*": ["src/common/utils/*"]
+      "@utils/*": ["src/common/utils/*"],
+      "@apps/*": ["src/pages/apps/*"]
 },
     "allowJs": true,
     "skipLibCheck": true,

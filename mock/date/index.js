@@ -8,6 +8,10 @@ const userInfo = Mock.mock({
       "image": {
         type: 0,
         src: 'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/file/file.png'
+      },
+      openWith: {
+        type: 0,
+        path: 'https://www.ynedu.plus'
       }
     }
   ],
@@ -18,6 +22,10 @@ const userInfo = Mock.mock({
       "image": {
         type: 0,
         src: 'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/file/file.png'
+      },
+      openWith: {
+        type: 1,
+        name: 'userinfo'
       }
     }
   ],

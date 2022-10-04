@@ -3,7 +3,7 @@ import { MyState } from './index'
 import _ from 'lodash'
 import getId from '@utils/getId'
 import type { Image } from '@/components/ImageComponent'
-import { App } from '@/store/deskSlice'
+import { App, OpenWith } from '@/store/deskSlice'
 import { WINDOW_STATUS } from '@/common/constants'
 
 const defaultWindowStyle = {
@@ -22,6 +22,7 @@ export interface Window {
   status: number
   style: WindowStyle
   image: Image
+  openWith: OpenWith
 }
 
 export interface WindowStyle {
@@ -92,7 +93,8 @@ const windowListSlice = (
             left: defaultWindowStyle.left + 20 * windowNum,
             top: defaultWindowStyle.top + 20 * windowNum,
             zIndex: defaultWindowStyle.zIndex + 100 * windowNum
-          }
+          },
+          openWith: app.openWith
         }
         newWindowList.push(window)
         windowId = window.id

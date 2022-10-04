@@ -1,11 +1,13 @@
 import { StoreApi } from 'zustand'
 import { MyState } from './index'
 import { Image } from '@/components/ImageComponent'
+import { OpenWith } from '@/store/deskSlice'
 
 export interface StartMenu {
   id: number
   title: string
   image: Image
+  openWith: OpenWith
 }
 
 export interface StartMenuSlice {
