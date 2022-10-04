@@ -3,7 +3,8 @@ import {
   MinusOutlined,
   CloseOutlined,
   BorderOutlined,
-  BlockOutlined
+  BlockOutlined,
+  ReloadOutlined
 } from '@ant-design/icons'
 import classnames from 'classnames'
 import styles from './index.module.scss'
@@ -15,6 +16,7 @@ import vars from '@/common/style/vars.scss'
 
 interface Props {
   windowRef: RefObject<HTMLDivElement>
+  setLoading: { (value: boolean): void }
 }
 
 interface Drag {
@@ -22,7 +24,7 @@ interface Drag {
   startY: number
 }
 
-const Header: React.FC<Props> = ({ windowRef }) => {
+const Header: React.FC<Props> = ({ windowRef, setLoading }) => {
   const { window: windowObj, id: windowId } = React.useContext(WindowContext)
   const editWindowStatus = useStore((state: MyState) => state.setWindowStatus)
   const closeWindow = useStore((state: MyState) => state.closeWindow)
@@ -95,6 +97,16 @@ const Header: React.FC<Props> = ({ windowRef }) => {
         {windowObj.title}
       </div>
       <div className={styles.tools}>
+        <div
+          className={styles.tool}
+          onClick={() => {
+            setLoading(true)
+            window.setTimeout(() => {
+              setLoading(false)
+            }, 200)
+          }}>
+          <ReloadOutlined />
+        </div>
         <div
           className={styles.tool}
           onClick={() => editWindowStatus(WINDOW_STATUS.MIN, windowId)}>

@@ -13,7 +13,7 @@ const Window: React.FC = () => {
   const { window } = React.useContext(WindowContext)
   return (
     <WindowBox>
-      <div></div>
+      <div>asd</div>
     </WindowBox>
   )
 }

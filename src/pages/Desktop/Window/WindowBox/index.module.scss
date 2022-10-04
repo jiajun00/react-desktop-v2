@@ -14,11 +14,6 @@ $shift: -6px;
   height: 100%;
 }
 
-.content {
-  width: 100%;
-  height: calc(100% - #{$window-header-height});
-}
-
 .dragRight {
   position: absolute;
   top: 32px;
