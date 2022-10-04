@@ -5,10 +5,10 @@ import { Loading3QuartersOutlined } from '@ant-design/icons'
 
 interface Props {
   loading: boolean
-  children: React.ReactNode
+  windowChildren: React.ReactNode
 }
 
-const Content: React.FC<Props> = ({ loading, children }) => {
+const Content: React.FC<Props> = ({ loading, windowChildren }) => {
   return (
     <div className={styles.content}>
       {loading ? (
@@ -16,7 +16,7 @@ const Content: React.FC<Props> = ({ loading, children }) => {
           <Spin size="large" spinning={loading} />
         </div>
       ) : (
-        children
+        windowChildren
       )}
     </div>
   )

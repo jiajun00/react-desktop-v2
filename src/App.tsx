@@ -2,10 +2,10 @@ import React from 'react'
 import { Spin } from 'antd'
 import styles from './App.module.scss'
 import { Routes, Route } from 'react-router-dom'
-import Desktop from './pages/Desktop'
-import Apps from './pages/Apps'
+import Desktop from './pages/desktop'
+import Apps from './pages/apps'
 import getToken from '@utils/getToken'
-import Login from './pages/Login'
+import Login from './pages/login'
 
 function App() {
   const [isLoad, setIsLoad] = React.useState<boolean>(false)
@@ -19,7 +19,7 @@ function App() {
       {isLoad ? (
         <Routes>
           <Route path="/" element={<Desktop />} />
-          <Route path="/apps" element={<Apps />} />
+          <Route path="/apps/*" element={<Apps />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       ) : (

@@ -338,6 +338,7 @@ module.exports = function (webpackEnv) {
         '@': paths.appSrc,
         '@img': `${paths.appSrc}/public/img`,
         '@utils': `${paths.appSrc}/common/utils`,
+        '@apps': `${paths.appSrc}/pages/apps`
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).

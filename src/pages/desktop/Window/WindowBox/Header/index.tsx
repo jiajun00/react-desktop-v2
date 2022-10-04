@@ -8,30 +8,25 @@ import {
 } from '@ant-design/icons'
 import classnames from 'classnames'
 import styles from './index.module.scss'
-import WindowContext from '@/pages/Desktop/Window/WindowContext'
+import WindowContext from '../../WindowContext'
 import useStore, { MyState } from '@/store'
-import { WINDOW_STATUS, WINDOW_MIN } from '@/common/constants'
+import { WINDOW_STATUS, WINDOW_MIN, WINDOW_DRAG } from '@/common/constants'
 import useMethods from '@utils/useMethods'
 import vars from '@/common/style/vars.scss'
+import { Drag } from '../index'
 
 interface Props {
   windowRef: RefObject<HTMLDivElement>
   setLoading: { (value: boolean): void }
+  drag: Drag
+  setDrag: { (value: Drag): void }
 }
 
-interface Drag {
-  startX: number
-  startY: number
-}
-
-const Header: React.FC<Props> = ({ windowRef, setLoading }) => {
+const Header: React.FC<Props> = ({ windowRef, setLoading, drag, setDrag }) => {
   const { window: windowObj, id: windowId } = React.useContext(WindowContext)
+  const editWindow = useStore((state: MyState) => state.editWindow)
   const editWindowStatus = useStore((state: MyState) => state.setWindowStatus)
   const closeWindow = useStore((state: MyState) => state.closeWindow)
-  const [drag, setDrag] = React.useState<Drag>({
-    startX: 0,
-    startY: 0
-  })
   const { mouseDown, mouseMove, mouseUp } = useMethods({
     mouseMove(event) {
       event.stopPropagation()
@@ -70,7 +65,8 @@ const Header: React.FC<Props> = ({ windowRef, setLoading }) => {
       const startY = event.clientY
       setDrag({
         startX,
-        startY
+        startY,
+        type: WINDOW_DRAG.TITLE
       })
       window.addEventListener('mousemove', mouseMove)
       window.onmouseup = mouseUp
@@ -83,12 +79,19 @@ const Header: React.FC<Props> = ({ windowRef, setLoading }) => {
       if (!windowRef.current) {
         setDrag({
           startX: 0,
-          startY: 0
+          startY: 0,
+          type: 0
         })
         return
       }
       windowObj.style.top = parseInt(windowRef.current.style.top)
       windowObj.style.left = parseInt(windowRef.current.style.left)
+      setDrag({
+        startX: 0,
+        startY: 0,
+        type: 0
+      })
+      editWindow(windowObj)
     }
   })
   return (

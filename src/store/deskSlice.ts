@@ -6,6 +6,13 @@ export interface App {
   id: number
   image: Image
   title: string
+  openWith: OpenWith
+}
+
+export interface OpenWith {
+  type: number
+  path?: string
+  name?: string
 }
 
 export interface DeskSlice {

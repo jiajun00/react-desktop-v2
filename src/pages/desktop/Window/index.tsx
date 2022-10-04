@@ -3,6 +3,7 @@ import styles from './index.module.scss'
 import WindowContext from './WindowContext'
 import type { Window as WindowType } from '@/store/windowSlice'
 import WindowBox from './WindowBox'
+import Open from './Open'
 
 interface Props {
   window: WindowType
@@ -13,7 +14,7 @@ const Window: React.FC = () => {
   const { window } = React.useContext(WindowContext)
   return (
     <WindowBox>
-      <div>asd</div>
+      <Open openWith={window.openWith} windowId={window.id} />
     </WindowBox>
   )
 }

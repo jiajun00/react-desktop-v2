@@ -6,13 +6,13 @@ import { WINDOW_STATUS, WINDOW_DRAG, WINDOW_MIN } from '@/common/constants'
 import vars from '@/common/style/vars.scss'
 import useMethods from '@utils/useMethods'
 import useStore, { MyState } from '@/store'
-import Content from '@/pages/Desktop/Window/WindowBox/Content'
+import Content from './Content'
 
 interface Props {
   children: React.ReactNode
 }
 
-interface Drag {
+export interface Drag {
   startX: number
   startY: number
   type: number
@@ -133,9 +133,13 @@ const WindowBox: React.FC<Props> = props => {
   return (
     <div className={styles.windowBox} ref={windowRef} style={windowStyle}>
       <div className={styles.main} style={{ zIndex: windowStyle.zIndex + 1 }}>
-        <Header setLoading={setLoading} windowRef={windowRef} />
-        {/* eslint-disable-next-line react/no-children-prop */}
-        <Content loading={loading} children={props.children} />
+        <Header
+          setLoading={setLoading}
+          drag={drag}
+          setDrag={setDrag}
+          windowRef={windowRef}
+        />
+        <Content loading={loading} windowChildren={props.children} />
         {windowObj.status === WINDOW_STATUS.NORMAL && (
           <>
             <div
