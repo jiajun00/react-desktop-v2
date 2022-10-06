@@ -1,0 +1,40 @@
+.viewBox {
+  position: relative;
+}
+
+.viewBoxBorder {
+  border: 1px solid $view-border-color;
+}
+
+.viewBoxMargin {
+  margin: 24px;
+}
+
+.viewBoxPadding {
+  padding: 24px;
+}
+
+.viewBoxRadius {
+  border-radius: 8px;
+}
+
+.breadcrumbBox {
+  position: absolute;
+  top: 4px;
+  left: 12px;
+}
+
+.breadcrumb {
+  display: block;
+}
+
+.breadcrumbItem {
+  color: #777;
+  user-select: none;
+}
+
+.breadcrumbItemHover {
+  &:hover {
+    color: #eee;
+  }
+}
