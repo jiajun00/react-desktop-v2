@@ -6,6 +6,7 @@ import styles from './index.module.scss'
 import StartMenu from './StartMenu'
 import Mask from './Mask'
 import Window from './Window'
+import RightMouseMenu from './RightMouseMenu'
 
 const Desktop: React.FC = () => {
   const showStartMenu = useStore((state: MyState) => state.showStartMenu)
@@ -19,6 +20,7 @@ const Desktop: React.FC = () => {
       <StartToolsBar />
       {showStartMenu && <StartMenu />}
       {showStartMenu && <Mask />}
+      <RightMouseMenu />
     </div>
   )
 }
