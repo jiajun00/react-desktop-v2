@@ -1,9 +1,7 @@
 $breadcrumb-color: #777;
 $breadcrumb-color-hover: #eee;
-
 $title-color: #fff;
 $sub-title-color: #bbb;
-
 $background: rgba(255, 255, 255, 0.03);
 
 .viewBox {
@@ -39,9 +37,11 @@ $background: rgba(255, 255, 255, 0.03);
   margin-right: 8px;
   color: $breadcrumb-color;
   cursor: pointer;
-  svg{
+
+  svg {
     font-size: 12px;
   }
+
   &:hover {
     color: $breadcrumb-color-hover;
   }
@@ -53,9 +53,9 @@ $background: rgba(255, 255, 255, 0.03);
 }
 
 .breadcrumbItem {
+  font-size: 12px;
   color: $breadcrumb-color;
   user-select: none;
-  font-size: 12px;
 }
 
 .breadcrumbItemHover {
@@ -65,8 +65,8 @@ $background: rgba(255, 255, 255, 0.03);
 }
 
 .header {
-  width: 100%;
   display: flex;
+  width: 100%;
 }
 
 .titleBox {
@@ -80,10 +80,10 @@ $background: rgba(255, 255, 255, 0.03);
 }
 
 .subTitle {
+  margin-left: 16px;
   font-size: 14px;
   color: $sub-title-color;
   line-height: 28px;
-  margin-left: 16px;
 }
 
 .extra {
@@ -91,13 +91,13 @@ $background: rgba(255, 255, 255, 0.03);
   margin: -10px -10px 0 0;
 }
 
-.footerBox{
-  height: 20px;
+.footerBox {
   width: 100%;
+  height: 20px;
 }
 
 .footer {
   position: absolute;
-  left: 12px;
   bottom: -16px;
+  left: 12px;
 }
