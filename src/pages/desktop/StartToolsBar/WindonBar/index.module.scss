@@ -53,6 +53,7 @@ $window-img-width: 20px;
 .windowTitle {
   overflow: hidden;
   width: calc(100% - #{$window-img-width + $window-img-padding-horizontal * 2});
+  font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 42px;
