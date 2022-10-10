@@ -1,5 +1,6 @@
 import React from 'react'
 import { Breadcrumb } from 'antd'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 import styles from './index.module.scss'
@@ -12,6 +13,11 @@ interface BreadcrumbData {
 interface Props {
   children?: React.ReactNode
   breadcrumb?: BreadcrumbData[]
+  back?: { (event: React.MouseEvent): void }
+  extra?: React.ReactNode
+  title?: string
+  subTitle?: string
+  footer?: React.ReactNode
   style?: React.CSSProperties
   border?: boolean
   margin?: boolean
@@ -22,6 +28,11 @@ interface Props {
 const View: React.FC<Props> = ({
   children,
   breadcrumb,
+  back,
+  extra,
+  title,
+  subTitle,
+  footer,
   style,
   border = false,
   margin = true,
@@ -39,6 +50,11 @@ const View: React.FC<Props> = ({
       style={style}>
       {breadcrumb && (
         <div className={styles.breadcrumbBox}>
+          {!!back && (
+            <div className={styles.back} onClick={event => back(event)}>
+              <ArrowLeftOutlined />
+            </div>
+          )}
           <Breadcrumb className={styles.breadcrumb}>
             {breadcrumb.map((row, index) => {
               const item = (
@@ -62,7 +78,20 @@ const View: React.FC<Props> = ({
           </Breadcrumb>
         </div>
       )}
+      <div className={styles.header}>
+        <div className={styles.titleBox}>
+          {title && <div className={styles.title}>{title}</div>}
+          {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
+        </div>
+        {extra && <div className={styles.extra}>{extra}</div>}
+      </div>
       {children}
+      {footer && (
+        <>
+          <div className={styles.footerBox} />
+          <div className={styles.footer}>{footer}</div>
+        </>
+      )}
     </div>
   )
 }

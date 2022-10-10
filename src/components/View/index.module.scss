@@ -1,5 +1,14 @@
+$breadcrumb-color: #777;
+$breadcrumb-color-hover: #eee;
+
+$title-color: #fff;
+$sub-title-color: #bbb;
+
+$background: rgba(255, 255, 255, 0.03);
+
 .viewBox {
   position: relative;
+  background: $background;
 }
 
 .viewBoxBorder {
@@ -20,21 +29,75 @@
 
 .breadcrumbBox {
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 12px;
+  display: flex;
+  width: calc(100% - 12px);
+}
+
+.back {
+  margin-right: 8px;
+  color: $breadcrumb-color;
+  cursor: pointer;
+  svg{
+    font-size: 12px;
+  }
+  &:hover {
+    color: $breadcrumb-color-hover;
+  }
 }
 
 .breadcrumb {
   display: block;
+  flex-grow: 1;
 }
 
 .breadcrumbItem {
-  color: #777;
+  color: $breadcrumb-color;
   user-select: none;
+  font-size: 12px;
 }
 
 .breadcrumbItemHover {
   &:hover {
-    color: #eee;
+    color: $breadcrumb-color-hover;
   }
+}
+
+.header {
+  width: 100%;
+  display: flex;
+}
+
+.titleBox {
+  flex-grow: 1;
+  display: flex;
+}
+
+.title {
+  font-size: 16px;
+  color: $title-color;
+}
+
+.subTitle {
+  font-size: 14px;
+  color: $sub-title-color;
+  line-height: 28px;
+  margin-left: 16px;
+}
+
+.extra {
+  float: right;
+  margin: -10px -10px 0 0;
+}
+
+.footerBox{
+  height: 20px;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  left: 12px;
+  bottom: -16px;
 }
