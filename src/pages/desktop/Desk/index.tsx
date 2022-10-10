@@ -5,9 +5,7 @@ import Apps from './Apps'
 import useStore, { MyState } from '@/store'
 import { getUserInfo } from '@/common/service/user'
 
-interface Props {}
-
-const Desk: React.FC<Props> = props => {
+const Desk: React.FC = () => {
   const setAppList = useStore((state: MyState) => state.setAppList)
   const setStartMenuList = useStore((state: MyState) => state.setStartMenuList)
   const setUserInfo = useStore((state: MyState) => state.setUserInfo)
