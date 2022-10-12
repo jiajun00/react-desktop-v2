@@ -10,9 +10,11 @@ import {
 import styles from './index.module.scss'
 import classnames from 'classnames'
 import useStore, { MyState } from '@/store'
+import { WINDOW_OPEN_WITH, IMAGE_TYPE } from '@/common/constants'
 
 const RightMouseMenu: React.FC = () => {
   const rightMouseMenu = useStore((state: MyState) => state.rightMouseMenu)
+  const openWindow = useStore((state: MyState) => state.openWindow)
   const closeRightMouseMenu = useStore(
     (state: MyState) => state.closeRightMouseMenu
   )
@@ -71,7 +73,22 @@ const RightMouseMenu: React.FC = () => {
           个人中心
         </div>
       </div>
-      <div className={styles.item}>
+      <div
+        className={styles.item}
+        onClick={() => {
+          openWindow({
+            id: 9999,
+            title: '背景设置',
+            image: {
+              type: IMAGE_TYPE.ANTD,
+              name: 'PictureOutlined'
+            },
+            openWith: {
+              type: WINDOW_OPEN_WITH.COMPONENT,
+              name: 'backgroundSet'
+            }
+          })
+        }}>
         <div className={styles.name}>
           <div className={styles.icon}>
             <PictureOutlined />

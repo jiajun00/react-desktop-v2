@@ -1,0 +1,58 @@
+.backgroundSetBox {
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  padding: 0 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.headerTitle {
+  font-size: 15px;
+  color: #999;
+}
+
+.view {
+  width: 100%;
+}
+
+.viewImg {
+  width: 100%;
+  height: auto;
+}
+
+.listBox {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px -20px;
+}
+
+.bg {
+  margin-top: 10px;
+  margin-left: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  width: 256px;
+  height: 144px;
+
+  &:hover {
+    border-color: #bbb;
+  }
+}
+
+.active {
+  border-color: darkblue;
+}
+
+.bgImg {
+  width: 100%;
+  height: 100%;
+}
