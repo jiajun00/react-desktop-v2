@@ -1,10 +1,12 @@
 .rightMouseMenuBox {
   position: absolute;
-  width: 220px;
-  height: auto;
+  z-index: 10002;
   border: 1px solid #555;
   border-radius: 3px;
+  width: $right-mouse-menu-width;
+  height: $right-mouse-menu-height;
   background: $right-mouse-menu-background;
+  backdrop-filter: saturate(3) blur(20px);
 }
 
 .item {
@@ -12,6 +14,7 @@
   padding: 4px 15px;
   cursor: pointer;
   user-select: none;
+
   &:hover {
     background: $hover-background2;
   }
@@ -31,5 +34,5 @@
 }
 
 .keyboard {
-  color: #555;
+  color: #666;
 }

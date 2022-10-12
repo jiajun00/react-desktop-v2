@@ -19,7 +19,7 @@ const Desktop: React.FC = () => {
       ))}
       <StartToolsBar />
       {showStartMenu && <StartMenu />}
-      {showStartMenu && <Mask />}
+      <Mask />
       <RightMouseMenu />
     </div>
   )

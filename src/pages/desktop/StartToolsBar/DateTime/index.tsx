@@ -53,9 +53,22 @@ const DateTime: React.FC = () => {
     }
   })
   return (
-    <div className={styles.dateTimeBox}>
-      <div>{`${dataTime.hour}:${dataTime.minute} 周${dataTime.week}`}</div>
-      <div>{`${dataTime.year}/${dataTime.month}/${dataTime.day}`}</div>
+    <div
+      className={styles.dateTimeBox}
+      onContextMenu={event => {
+        event.stopPropagation()
+        event.preventDefault()
+      }}>
+      <div className={styles.timeBox}>
+        <div className={styles.time}>
+          {`${dataTime.hour}:${dataTime.minute}`}
+        </div>
+        <div className={styles.week}>{`周${dataTime.week}`}</div>
+      </div>
+      <div
+        className={
+          styles.date
+        }>{`${dataTime.year}/${dataTime.month}/${dataTime.day}`}</div>
     </div>
   )
 }

@@ -9,10 +9,23 @@ import {
 } from '@ant-design/icons'
 import styles from './index.module.scss'
 import classnames from 'classnames'
+import useStore, { MyState } from '@/store'
 
 const RightMouseMenu: React.FC = () => {
+  const rightMouseMenu = useStore((state: MyState) => state.rightMouseMenu)
+  const closeRightMouseMenu = useStore(
+    (state: MyState) => state.closeRightMouseMenu
+  )
   return (
-    <div className={styles.rightMouseMenuBox} style={{ top: 100, left: 300 }}>
+    <div
+      id={`right_menu_${rightMouseMenu.id}`}
+      className={styles.rightMouseMenuBox}
+      style={{
+        top: rightMouseMenu.top,
+        left: rightMouseMenu.left,
+        display: rightMouseMenu.show ? 'block' : 'none'
+      }}
+      onClick={() => closeRightMouseMenu()}>
       <div className={styles.item}>
         <div className={styles.name}>
           <div className={styles.icon}>
@@ -29,7 +42,11 @@ const RightMouseMenu: React.FC = () => {
           按名称排序
         </div>
       </div>
-      <div className={classnames(styles.item, styles.bottom)}>
+      <div
+        className={classnames(styles.item, styles.bottom)}
+        onClick={() => {
+          window.location.reload()
+        }}>
         <div className={styles.name}>
           <div className={styles.icon}>
             <RedoOutlined />

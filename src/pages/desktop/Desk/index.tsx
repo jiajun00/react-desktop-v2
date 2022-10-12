@@ -10,6 +10,9 @@ const Desk: React.FC = () => {
   const setStartMenuList = useStore((state: MyState) => state.setStartMenuList)
   const setUserInfo = useStore((state: MyState) => state.setUserInfo)
   const setRoleInfo = useStore((state: MyState) => state.setRoleInfo)
+  const openRightMouseMenu = useStore(
+    (state: MyState) => state.openRightMouseMenu
+  )
   React.useEffect(() => {
     getUserInfo(res => {
       const { data } = res
@@ -22,6 +25,11 @@ const Desk: React.FC = () => {
   return (
     <div
       className={styles.desk}
+      onContextMenu={event => {
+        event.stopPropagation()
+        event.preventDefault()
+        openRightMouseMenu(event)
+      }}
       style={{ backgroundImage: `url(${backgroundImg})` }}>
       <Apps />
     </div>
