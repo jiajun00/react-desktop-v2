@@ -12,6 +12,7 @@ interface BreadcrumbData {
 
 interface Props {
   children?: React.ReactNode
+  className?: string
   breadcrumb?: BreadcrumbData[]
   back?: { (event: React.MouseEvent): void }
   extra?: React.ReactNode
@@ -26,6 +27,7 @@ interface Props {
 }
 
 const View: React.FC<Props> = ({
+  className,
   children,
   breadcrumb,
   back,
@@ -41,7 +43,7 @@ const View: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={classnames(styles.viewBox, {
+      className={classnames(styles.viewBox, className, {
         [styles.viewBoxBorder]: border,
         [styles.viewBoxMargin]: margin,
         [styles.viewBoxPadding]: padding,
