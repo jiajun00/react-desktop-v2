@@ -125,16 +125,15 @@ const windowListSlice = (
       const window = list[windowIndex]
       window.status = status
       if (status === WINDOW_STATUS.MIN) {
-        if (windowList.length === 1) {
+        const windowOpenList = list.filter(
+          row => row.status !== WINDOW_STATUS.MIN
+        )
+        if (windowOpenList.length === 0) {
           setWindowActionId('')
         } else {
           const maxZIndex = Math.max(
-            ...list.map(item => {
-              if (item.id === id) {
-                return 0
-              } else {
-                return item.style.zIndex
-              }
+            ...windowOpenList.map(item => {
+              return item.style.zIndex
             })
           )
           const window = list.find(
