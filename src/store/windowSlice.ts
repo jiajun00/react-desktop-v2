@@ -41,7 +41,7 @@ export interface WindowSlice {
   setWindowList: (windowList: Window[]) => void
   editWindow: (window: Window) => void
   setWindowStatus: (status: number, id: string) => void
-  setWindowActionId: (id: string, type?: number) => void
+  setWindowActionId: (id: string, type?: boolean) => void
   closeWindow: (id: string) => void
   closeWindowAll: () => void
 }
@@ -119,21 +119,40 @@ const windowListSlice = (
   },
   // 设置窗口最大化、最小化、正常
   setWindowStatus: (status: number, id: string) => {
-    set(({ windowList }) => {
+    set(({ windowList, setWindowActionId }) => {
       const list = _.cloneDeep(windowList)
       const windowIndex = list.findIndex(row => row.id === id)
       const window = list[windowIndex]
       window.status = status
+      if (status === WINDOW_STATUS.MIN) {
+        if (windowList.length === 1) {
+          setWindowActionId('')
+        } else {
+          const maxZIndex = Math.max(
+            ...list.map(item => {
+              if (item.id === id) {
+                return 0
+              } else {
+                return item.style.zIndex
+              }
+            })
+          )
+          const window = list.find(
+            row => row.style.zIndex === maxZIndex
+          ) as Window
+          setWindowActionId(window.id, true)
+        }
+      }
       return {
         windowList: list
       }
     })
   },
-  setWindowActionId: (id: string, type = 0) => {
+  setWindowActionId: (id: string, type = false) => {
     set(({ windowList }) => {
       const res = { windowActionId: id, windowList }
       // 重新排序zIndex
-      if (type === 1) {
+      if (type) {
         const windowIndex = windowList.findIndex(row => row.id === id)
         const newWindowList = resetWindowListZIndex(windowList, windowIndex)
         newWindowList[windowIndex].status = WINDOW_STATUS.NORMAL
