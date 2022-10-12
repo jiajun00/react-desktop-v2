@@ -3,6 +3,10 @@ $primary-color: red;
 $desk-background1: rgba(32, 32, 32, 0.75);
 $desk-background2: rgba(255, 255, 255, 0.1);
 
+$right-mouse-menu-background: rgba(32, 32, 32, 0.75);
+$right-mouse-menu-width: 220px;
+$right-mouse-menu-height: 184px;
+
 $hover-background1: rgba(255, 255, 255, 0.25);
 $hover-background2: rgba(255, 255, 255, 0.15);
 
@@ -22,5 +26,7 @@ $start-menu-height: 550px;
 $view-border-color: #555;
 
 :export {
-  startToolsBarHeight: $start-tools-bar-height
+  startToolsBarHeight: $start-tools-bar-height;
+  rightMouseMenuWidth: $right-mouse-menu-width;
+  rightMouseMenuHeight: $right-mouse-menu-height;
 }

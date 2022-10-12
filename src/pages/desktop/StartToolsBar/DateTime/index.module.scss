@@ -5,3 +5,20 @@
   font-weight: lighter;
   user-select: none;
 }
+
+.timeBox {
+  display: flex;
+}
+
+.time {
+  font-size: 13px;
+}
+
+.week {
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.date {
+  font-size: 12px;
+}

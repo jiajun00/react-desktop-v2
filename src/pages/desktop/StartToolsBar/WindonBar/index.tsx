@@ -13,7 +13,12 @@ const WindowBar: React.FC = () => {
   )
   const closeWindow = useStore((state: MyState) => state.closeWindow)
   return (
-    <div className={styles.windowBarBox}>
+    <div
+      className={styles.windowBarBox}
+      onContextMenu={event => {
+        event.stopPropagation()
+        event.preventDefault()
+      }}>
       {windowList.map(window => (
         <div
           key={window.id}

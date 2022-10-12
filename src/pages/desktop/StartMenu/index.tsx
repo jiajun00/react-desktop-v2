@@ -5,7 +5,12 @@ import Application from './Application'
 
 const StartMenu: React.FC = () => {
   return (
-    <div className={styles.startMenuBox}>
+    <div
+      onContextMenu={event => {
+        event.stopPropagation()
+        event.preventDefault()
+      }}
+      className={styles.startMenuBox}>
       <Control />
       <Application />
     </div>
