@@ -5,7 +5,7 @@ import { IMAGE_TYPE } from '@/common/constants'
 interface Props {
   image: Image
   style?: React.CSSProperties
-  className?: any
+  className?: string
 }
 
 export interface Image {
