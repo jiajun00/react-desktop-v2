@@ -1,14 +1,8 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Management from './management'
+import Routers from './Routers'
 
 const Apps: React.FC = () => {
-  return (
-    <Routes>
-      asd
-      <Route path="/manage/*" element={<Management />} />
-    </Routes>
-  )
+  return <Routers />
 }
 
 export default Apps
