@@ -46,6 +46,69 @@ const userInfo = Mock.mock({
   }
 })
 
+const roleList = Mock.mock({
+  "list": [
+    {
+      "id": 1,
+      "roleName": "系统管理员",
+      "privileges": '*'
+    },
+    {
+      "id": 2,
+      "roleName": "总经理",
+      "privileges": [
+        {
+          id: 1,
+          name: '权限管理',
+          pid: 0
+        },
+        {
+          id: 2,
+          name: '角色管理',
+          pid: 0
+        },
+        {
+          id: 3,
+          name: '员工管理',
+          pid: 0
+        },
+        {
+          id: 4,
+          name: '报表管理',
+          pid: 0
+        },
+        {
+          id: 5,
+          name: '考勤管理',
+          pid: 0
+        },
+        {
+          id: 6,
+          name: '绩效管理',
+          pid: 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "roleName": "部门经理",
+      "privileges": [
+        {
+          id: 1,
+          name: '权限管理',
+          pid: 0
+        },
+        {
+          id: 2,
+          name: '角色管理',
+          pid: 0
+        }
+      ]
+    }
+  ]
+})
+
 module.exports = {
-  userInfo
+  userInfo,
+  roleList
 }

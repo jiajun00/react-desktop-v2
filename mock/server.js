@@ -21,6 +21,8 @@ app.get('/', function(req, res) {
 
 router.use('/user/', require('./user/index'))
 
+router.use('/system/', require('./system/index'))
+
 app.use('/api', router)
 
 app.listen(3080)
