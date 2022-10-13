@@ -121,7 +121,7 @@ const Privileges: React.FC<Props> = () => {
   })
   const treeData = React.useMemo(() => {
     return generalData(data)
-  }, [data])
+  }, [data]) // eslint-disable-line
   const handleOk = () => {
     setConfirmLoading(true)
     form

@@ -9,7 +9,7 @@ module.exports = {
   ignoreFiles: ['build/**/*', 'public/**/*', 'src/common/style/**/*'],
   rules: {
     'no-empty-source': null,
-    'selector-class-pattern': '^[a-z][a-zA-Z0-9]+$',
+    'selector-class-pattern': '^[a-z][a-zA-Z0-9-]+$',
     'selector-pseudo-class-no-unknown': [
       true,
       {
