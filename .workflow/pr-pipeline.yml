@@ -2,7 +2,7 @@ version: '1.0'
 name: pr-pipeline
 displayName: PRPipeline
 stages:
-  - stage: 
+  - stage:
     name: compile
     displayName: 编译
     steps:
@@ -20,7 +20,7 @@ stages:
           - name: BUILD_ARTIFACT
             # 构建产物获取路径，是指代码编译完毕之后构建物的所在路径
             path:
-              - ./dist
+              - ./build
       - step: publish@general_artifacts
         name: publish_general_artifacts
         displayName: 上传制品
