@@ -22,8 +22,8 @@ export interface DataSource {
 interface Props {
   dataSource: DataSource
   columns: any[]
-  rowKey: string
-  pagination?: TablePaginationConfig | null
+  rowKey?: string | { (record: any): string }
+  pagination?: TablePaginationConfig | null | false
   search?: Search
   loading?: boolean
   reload?: boolean
@@ -59,7 +59,7 @@ const Table: React.FC<Props> = ({
       pageSize: 10
     }
   } else {
-    if (pagination === null) {
+    if (pagination === null || pagination === false) {
       pagination = null
     } else {
       initPaginationConfig = pagination

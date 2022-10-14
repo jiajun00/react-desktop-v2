@@ -6,7 +6,6 @@ import type { DataNode } from 'antd/es/tree'
 import View from '@/components/View'
 import useMethods from '@utils/useMethods'
 
-
 interface Data extends DataNode {
   pid: string
   children?: Data[]
