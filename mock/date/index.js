@@ -47,6 +47,9 @@ const userInfo = Mock.mock({
 })
 
 const roleList = Mock.mock({
+  "current": 1,
+  "totalPage": 5,
+  "total": 50,
   "list": [
     {
       "id": 1,
@@ -92,6 +95,38 @@ const roleList = Mock.mock({
     {
       "id": 3,
       "roleName": "部门经理",
+      "privileges": [
+        {
+          id: 1,
+          name: '权限管理',
+          pid: 0
+        },
+        {
+          id: 2,
+          name: '角色管理',
+          pid: 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "roleName": "员工1",
+      "privileges": [
+        {
+          id: 1,
+          name: '权限管理',
+          pid: 0
+        },
+        {
+          id: 2,
+          name: '角色管理',
+          pid: 0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "roleName": "员工3",
       "privileges": [
         {
           id: 1,

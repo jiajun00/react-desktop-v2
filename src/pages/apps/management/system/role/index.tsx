@@ -1,14 +1,14 @@
 import React from 'react'
 import View from '@/components/View'
-import { Space, Button } from 'antd'
-import type { ColumnsType, TablePaginationConfig } from 'antd/es/table'
-import type { FilterValue, SorterResult } from 'antd/es/table/interface'
+import { Space } from 'antd'
 import styles from './index.module.scss'
-import { getRoleList } from '@/common/service/system'
+import {
+  getRoleList,
+  RoleListData,
+  RoleListParams
+} from '@/common/service/system'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import Table from '@/components/Table'
-
-interface Props {}
 
 interface PrivilegesData {
   id: string
@@ -22,27 +22,27 @@ export interface RoleData {
   privileges: PrivilegesData[] | '*'
 }
 
-interface TableParams {
-  pagination?: TablePaginationConfig
-  sortField?: string
-  sortOrder?: string
-  filters?: Record<string, FilterValue>
-}
-
-const Role: React.FC<Props> = () => {
-  const [dataSource, setDataSource] = React.useState<RoleData[]>([])
-  const [tableParams, setTableParams] = React.useState<TableParams>({
-    pagination: {
-      current: 1,
-      pageSize: 10
-    }
+const Role: React.FC = () => {
+  const [dataSource, setDataSource] = React.useState<RoleListData>({
+    current: 0,
+    list: [],
+    total: 0,
+    totalPage: 0
   })
-  React.useEffect(() => {
-    getRoleList(res => {
-      const { data } = res
-      setDataSource(data.list || [])
-    })
-  }, [])
+  const [tableLoading, setTableLoading] = React.useState<boolean>(false)
+  const getList = (values: RoleListParams) => {
+    setTableLoading(true)
+    const params = {
+      ...values
+    }
+    setTimeout(() => {
+      getRoleList(params, res => {
+        const { data } = res
+        setDataSource(data)
+        setTableLoading(false)
+      })
+    }, 1000)
+  }
   const columns = [
     {
       title: '角色名',
@@ -83,13 +83,17 @@ const Role: React.FC<Props> = () => {
       <View>
         <Table
           rowKey="id"
+          loading={tableLoading}
           dataSource={dataSource}
           columns={columns}
-          pagination={tableParams.pagination}
           search={{
-            onSearch: values => console.log(values)
+            placeholder: '请输入角色名搜索',
+            name: 'roleName'
           }}
-          reload={values => console.log(values)}
+          reload
+          getData={getList}
+          addFun={() => console.log('add')}
+          deleteFun={values => console.log(values)}
         />
       </View>
     </div>

@@ -1,24 +1,35 @@
 import React from 'react'
 import styles from './index.module.scss'
 import { PlusOutlined, DeleteOutlined, RedoOutlined } from '@ant-design/icons'
+import type { PaginationProps, TableProps } from 'antd'
 import { Button, Space, Table as TableComponent, Input } from 'antd'
 import { TablePaginationConfig } from 'antd/es/table'
 import { FilterValue } from 'antd/es/table/interface'
 
 export interface Search {
   placeholder?: string
-  onSearch: { (value: string): void }
+  name: string
   width?: number
 }
 
+export interface DataSource {
+  list: any[]
+  current?: number
+  totalPage?: number
+  total?: number
+}
+
 interface Props {
-  dataSource: any[]
+  dataSource: DataSource
   columns: any[]
   rowKey: string
-  pagination: TablePaginationConfig | false | undefined
+  pagination?: TablePaginationConfig | null
   search?: Search
   loading?: boolean
-  reload?: { (values: any): void }
+  reload?: boolean
+  getData: { (values: any): void }
+  deleteFun?: { (values: React.Key[]): void }
+  addFun?: { (): void }
 }
 
 interface TableParams {
@@ -32,12 +43,65 @@ const Table: React.FC<Props> = ({
   dataSource,
   columns,
   rowKey,
-  pagination = false,
+  pagination,
   search,
   loading = false,
-  reload
+  reload,
+  getData,
+  deleteFun,
+  addFun
 }) => {
   const searchRef = React.useRef<any>(null)
+  let initPaginationConfig = null
+  if (pagination === undefined) {
+    initPaginationConfig = {
+      current: 1,
+      pageSize: 10
+    }
+  } else {
+    if (pagination === null) {
+      pagination = null
+    } else {
+      initPaginationConfig = pagination
+    }
+  }
+  const [paginationConfig, setPaginationConfig] =
+    React.useState<TablePaginationConfig | null>(initPaginationConfig)
+  const [selectRowKeys, setSelectRowKeys] = React.useState<React.Key[]>([])
+  const onShowSizeChange: PaginationProps['onShowSizeChange'] = (
+    current,
+    pageSize
+  ) => {
+    setPaginationConfig(prevState => ({
+      ...prevState,
+      current,
+      pageSize
+    }))
+  }
+  React.useEffect(() => {
+    getData({ ...paginationConfig })
+  }, [paginationConfig]) // eslint-disable-line
+  const tableProps: TableProps<any> = {
+    rowKey: rowKey,
+    dataSource: dataSource.list,
+    columns: columns,
+    loading: loading
+  }
+  if (paginationConfig) {
+    tableProps.pagination = {
+      showSizeChanger: true,
+      onShowSizeChange: onShowSizeChange,
+      ...paginationConfig
+    }
+  }
+  if (deleteFun) {
+    tableProps.rowSelection = {
+      type: 'checkbox',
+      onChange: (selectedRowKeys: React.Key[]) => {
+        setSelectRowKeys(selectedRowKeys)
+      }
+    }
+  }
   return (
     <div className={styles.tableBox}>
       <div className={styles.tableHeader}>
@@ -47,7 +111,12 @@ const Table: React.FC<Props> = ({
               ref={searchRef}
               style={{ width: search.width || 400 }}
               placeholder={search.placeholder || '请输入搜索内容'}
-              onSearch={(value: string) => search.onSearch(value)}
+              onSearch={(value: string) =>
+                getData({
+                  ...paginationConfig,
+                  [search.name]: value
+                })
+              }
               enterButton
             />
           )}
@@ -58,34 +127,50 @@ const Table: React.FC<Props> = ({
               <Button
                 type="primary"
                 onClick={() => {
-                  searchRef.current && reload(searchRef.current.input.value)
+                  const params = {
+                    ...paginationConfig
+                  } as any
+                  if (searchRef.current && search) {
+                    params[search.name] = searchRef.current.input.value
+                  }
+                  getData(params)
                 }}>
                 <RedoOutlined />
               </Button>
             )}
-            <Button type="primary" icon={<PlusOutlined />}>
-              新增
-            </Button>
-            <Button type="primary" icon={<DeleteOutlined />} danger>
-              批量删除
-            </Button>
+            {addFun && (
+              <Button
+                type="primary"
+                icon={<PlusOutlined />}
+                onClick={() => addFun()}>
+                新增
+              </Button>
+            )}
+            {deleteFun && (
+              <Button
+                type="primary"
+                icon={<DeleteOutlined />}
+                danger
+                disabled={selectRowKeys.length === 0}
+                onClick={() => deleteFun(selectRowKeys)}>
+                批量删除
+              </Button>
+            )}
           </Space>
         </div>
       </div>
-      <TableComponent
-        rowKey={rowKey}
-        dataSource={dataSource}
-        columns={columns}
-        loading={loading}
-        pagination={
-          pagination
-            ? {
-                ...pagination,
-                showSizeChanger: true
-              }
-            : pagination
-        }
-      />
+      <div className={styles.table}>
+        <TableComponent {...tableProps} />
+        <div className={styles.dataBox}>
+          {dataSource.total && <div className={styles.total}>共50条</div>}
+          {paginationConfig && (
+            <>
+              <div className={styles.current}>第1页</div>/
+              <div className={styles.totalPage}>共5页</div>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

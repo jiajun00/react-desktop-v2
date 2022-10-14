@@ -6,7 +6,6 @@ import type { DataNode } from 'antd/es/tree'
 import View from '@/components/View'
 import useMethods from '@utils/useMethods'
 
-interface Props {}
 
 interface Data extends DataNode {
   pid: string
@@ -77,7 +76,7 @@ interface PrivilegesData {
   pid: string
 }
 
-const Privileges: React.FC<Props> = () => {
+const Privileges: React.FC = () => {
   const [data, setData] = React.useState<Data[]>(initData)
   const [open, setOpen] = React.useState<boolean>(false)
   const [form] = Form.useForm()
