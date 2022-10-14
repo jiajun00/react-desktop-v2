@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './index.module.scss'
 import { PlusOutlined, DeleteOutlined, RedoOutlined } from '@ant-design/icons'
 import type { PaginationProps, TableProps } from 'antd'
+import { TableRowSelection } from 'antd/lib/table/interface'
 import { Button, Space, Table as TableComponent, Input } from 'antd'
 import { TablePaginationConfig } from 'antd/es/table'
 import { FilterValue } from 'antd/es/table/interface'
@@ -30,6 +31,7 @@ interface Props {
   getData: { (values: any): void }
   deleteFun?: { (values: React.Key[]): void }
   addFun?: { (): void }
+  rowSelection?: TableRowSelection<any>
 }
 
 interface TableParams {
@@ -49,7 +51,8 @@ const Table: React.FC<Props> = ({
   reload,
   getData,
   deleteFun,
-  addFun
+  addFun,
+  rowSelection
 }) => {
   const searchRef = React.useRef<any>(null)
   let initPaginationConfig = null
@@ -101,6 +104,9 @@ const Table: React.FC<Props> = ({
         setSelectRowKeys(selectedRowKeys)
       }
     }
+  }
+  if (rowSelection) {
+    tableProps.rowSelection = rowSelection
   }
   return (
     <div className={styles.tableBox}>
