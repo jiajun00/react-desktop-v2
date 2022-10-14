@@ -25,7 +25,7 @@ react-desktops-v2是原项目 [react-desktops](https://gitee.com/jiajun000_admin
 打开chrome浏览器访问 [http://localhost:9080](http://localhost:9080).
 
 ## 在线演示
-[演示地址]()
+[演示地址](http://desktop.ynedu.plus)
 
 ## 运行截图
 
