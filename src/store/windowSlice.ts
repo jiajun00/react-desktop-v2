@@ -8,7 +8,7 @@ import { WINDOW_STATUS } from '@/common/constants'
 
 const defaultWindowStyle = {
   display: 'block',
-  width: 900,
+  width: 920,
   height: 600,
   top: 100,
   left: 50,

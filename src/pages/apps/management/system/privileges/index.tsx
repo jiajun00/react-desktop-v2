@@ -5,87 +5,25 @@ import styles from './index.module.scss'
 import type { DataNode } from 'antd/es/tree'
 import View from '@/components/View'
 import useMethods from '@utils/useMethods'
+import { getPrivileges } from '@/common/service/system'
 
-interface Props {}
-
-interface Data extends DataNode {
+export interface PrivilegesData extends DataNode {
+  title: string | React.ReactNode
+  key: string
   pid: string
-  children?: Data[]
+  children?: PrivilegesData[]
 }
 
-const initData = [
-  {
-    title: 'parent 1',
-    key: '0-0',
-    pid: '0',
-    children: [
-      {
-        title: 'parent 1-0',
-        key: '0-0-0',
-        pid: '0-0',
-        children: [
-          { title: 'leaf', key: '0-0-0-0', pid: '0-0-0' },
-          {
-            title: 'multiple',
-            pid: '0-0-0',
-            key: '0-0-0-1'
-          },
-          { title: 'leaf', key: '0-0-0-2', pid: '0-0-0' }
-        ]
-      },
-      {
-        title: 'parent 1-1',
-        key: '0-0-1',
-        pid: '0-0',
-        children: [{ title: 'leaf', key: '0-0-1-0', pid: '0-0-1' }]
-      },
-      {
-        title: 'parent 1-2',
-        key: '0-0-2',
-        pid: '0-0',
-        children: [
-          { title: 'leaf', key: '0-0-2-0', pid: '0-0-2' },
-          {
-            title: 'leaf',
-            pid: '0-0-2',
-            key: '0-0-2-1'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: 'parent 2',
-    key: '0-1',
-    pid: '0',
-    children: [
-      {
-        title: 'parent 2-0',
-        key: '0-1-0',
-        pid: '0-1',
-        children: [
-          { title: 'leaf', key: '0-1-0-0', pid: '0-1-0' },
-          { title: 'leaf', key: '0-1-0-1', pid: '0-1-0' }
-        ]
-      }
-    ]
-  }
-]
-
-interface PrivilegesData {
-  name: string
-  pid: string
-}
-
-const Privileges: React.FC<Props> = () => {
-  const [data, setData] = React.useState<Data[]>(initData)
+const Privileges: React.FC = () => {
+  const [data, setData] = React.useState<PrivilegesData[]>([])
+  const [isLoad, setIsLoad] = React.useState<boolean>(false)
   const [open, setOpen] = React.useState<boolean>(false)
   const [form] = Form.useForm()
   const [confirmLoading, setConfirmLoading] = React.useState<boolean>(false)
-  const { generalData } = useMethods({
-    generalData(data: Data[]) {
+  const { generalData, getPrivilegesData } = useMethods({
+    generalData(data: PrivilegesData[]) {
       return data.map(row => {
-        const obj: Data = {
+        const obj: PrivilegesData = {
           ...row,
           title: (
             <>
@@ -117,8 +55,17 @@ const Privileges: React.FC<Props> = () => {
         }
         return obj
       })
+    },
+    getPrivilegesData() {
+      getPrivileges(res => {
+        setIsLoad(true)
+        return setData(res.data)
+      })
     }
   })
+  React.useEffect(() => {
+    getPrivilegesData()
+  }, []) // eslint-disable-line
   const treeData = React.useMemo(() => {
     return generalData(data)
   }, [data]) // eslint-disable-line
@@ -164,12 +111,14 @@ const Privileges: React.FC<Props> = () => {
             新增权限
           </Button>
         </div>
-        <Tree
-          showLine={true}
-          defaultExpandedKeys={['0-0-0']}
-          treeData={treeData}
-          defaultExpandAll
-        />
+        {isLoad && (
+          <Tree
+            showLine={true}
+            defaultExpandedKeys={[]}
+            treeData={treeData}
+            defaultExpandAll
+          />
+        )}
       </View>
       <Modal
         title="Title"
@@ -191,7 +140,6 @@ const Privileges: React.FC<Props> = () => {
             rules={[{ required: true, message: '请输入权限名称!' }]}>
             <Input placeholder="请输入权限名称" />
           </Form.Item>
-
           <Form.Item
             label="上级权限"
             name="pid"

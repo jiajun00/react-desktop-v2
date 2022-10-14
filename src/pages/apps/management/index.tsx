@@ -1,6 +1,10 @@
 import React from 'react'
 import Routers from './Routers'
-import { AlignLeftOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  AlignLeftOutlined,
+  UserOutlined,
+  UserSwitchOutlined
+} from '@ant-design/icons'
 import { useSearchParams, useLocation } from 'react-router-dom'
 import styles from './index.module.scss'
 import LeftRight from '@/components/Layout/LeftRight'
@@ -21,6 +25,11 @@ const Management: React.FC = () => {
           {
             label: '角色管理',
             key: '/apps/manage/role',
+            icon: <UserSwitchOutlined />
+          },
+          {
+            label: '个人中心',
+            key: '/apps/manage/userinfo',
             icon: <UserOutlined />
           }
         ]}
