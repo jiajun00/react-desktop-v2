@@ -10,9 +10,11 @@ import { Tooltip, Modal } from 'antd'
 import styles from './index.module.scss'
 import useMethods from '@utils/useMethods'
 import useStore, { MyState } from '@/store'
+import windowOpenConfig from '@utils/windowOpenConfig'
 
 const Control: React.FC = () => {
   const setShowStartMenu = useStore((state: MyState) => state.setShowStartMenu)
+  const openWindow = useStore((state: MyState) => state.openWindow)
   const { logout } = useMethods({
     logout() {
       Modal.confirm({
@@ -47,7 +49,9 @@ const Control: React.FC = () => {
           overlayClassName={styles.description}
           placement="right"
           title="设置">
-          <div className={styles.icon}>
+          <div
+            className={styles.icon}
+            onClick={() => openWindow(windowOpenConfig.systemSet)}>
             <SettingOutlined />
           </div>
         </Tooltip>
@@ -55,7 +59,9 @@ const Control: React.FC = () => {
           overlayClassName={styles.description}
           placement="right"
           title="个人中心">
-          <div className={styles.icon}>
+          <div
+            className={styles.icon}
+            onClick={() => openWindow(windowOpenConfig.userinfo)}>
             <UserOutlined />
           </div>
         </Tooltip>

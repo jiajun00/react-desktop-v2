@@ -9,3 +9,4 @@
 ## 公共组件
 * [View](./公共组件/View.md)
 * [ImageComponent](./公共组件/ImageComponent.md)
+* [Table](./公共组件/Table.md)

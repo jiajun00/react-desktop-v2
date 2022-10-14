@@ -115,7 +115,7 @@ const Table: React.FC<Props> = ({
           {search && (
             <Input.Search
               ref={searchRef}
-              style={{ width: search.width || 400 }}
+              style={{ width: search.width || 330 }}
               placeholder={search.placeholder || '请输入搜索内容'}
               onSearch={(value: string) =>
                 getData({

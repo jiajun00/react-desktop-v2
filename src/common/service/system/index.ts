@@ -1,5 +1,6 @@
 import { Callback, post } from '@utils/request'
 import { RoleData } from '@apps/management/system/role'
+import { PrivilegesData } from '@apps/management/system/privileges'
 
 export interface RoleListData {
   current: number
@@ -15,6 +16,15 @@ export interface ResRoleList {
 
 export interface RoleListParams {
   roleName: string
+}
+
+export interface ResPrivileges {
+  data: PrivilegesData[]
+  code: number
+}
+
+export const getPrivileges = (success: Callback<ResPrivileges>) => {
+  post('/api/system/getPrivileges', {}, success)
 }
 
 export const getRoleList = (

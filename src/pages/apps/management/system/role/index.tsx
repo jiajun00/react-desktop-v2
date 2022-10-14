@@ -1,6 +1,6 @@
 import React from 'react'
 import View from '@/components/View'
-import { Space } from 'antd'
+import { Space, Modal } from 'antd'
 import styles from './index.module.scss'
 import {
   getRoleList,
@@ -9,6 +9,8 @@ import {
 } from '@/common/service/system'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import Table from '@/components/Table'
+import useMethods from '@utils/useMethods'
+import RoleForm, { OnRef } from './RoleForm'
 
 interface PrivilegesData {
   id: string
@@ -22,6 +24,13 @@ export interface RoleData {
   privileges: PrivilegesData[] | '*'
 }
 
+export interface FormModal {
+  open: boolean
+  loading: boolean
+  title: string
+  initValues?: RoleData
+}
+
 const Role: React.FC = () => {
   const [dataSource, setDataSource] = React.useState<RoleListData>({
     current: 0,
@@ -30,19 +39,48 @@ const Role: React.FC = () => {
     totalPage: 0
   })
   const [tableLoading, setTableLoading] = React.useState<boolean>(false)
-  const getList = (values: RoleListParams) => {
-    setTableLoading(true)
-    const params = {
-      ...values
-    }
-    setTimeout(() => {
-      getRoleList(params, res => {
-        const { data } = res
-        setDataSource(data)
-        setTableLoading(false)
-      })
-    }, 1000)
+  const initFormModal = {
+    title: '',
+    open: false,
+    loading: false
   }
+  const [formModal, setFormModal] = React.useState<FormModal>(initFormModal)
+  const roleFormRef = React.useRef<OnRef>()
+  const { getList, submit, openEditRoleForm } = useMethods({
+    getList(values: RoleListParams) {
+      setTableLoading(true)
+      const params = {
+        ...values
+      }
+      setTimeout(() => {
+        getRoleList(params, res => {
+          const { data } = res
+          setDataSource(data)
+          setTableLoading(false)
+        })
+      }, 1000)
+    },
+    openEditRoleForm(record) {
+      setFormModal(prevState => {
+        const initValues = {
+          id: record.id,
+          roleName: record.roleName,
+          privileges: record.privileges.map((row: PrivilegesData) => row.id)
+        }
+        return {
+          ...prevState,
+          title: `编辑角色-${record.roleName}`,
+          open: true,
+          initValues
+        }
+      })
+    },
+    submit: () => {
+      roleFormRef.current?.submit(values => {
+        console.log(values)
+      })
+    }
+  })
   const columns = [
     {
       title: '角色名',
@@ -66,12 +104,20 @@ const Role: React.FC = () => {
       render: (id: string, record: RoleData) => {
         return (
           <Space size="middle">
-            <a>
-              <EditOutlined />
-            </a>
-            <a>
-              <DeleteOutlined onClick={() => console.log(id)} />
-            </a>
+            {record.privileges !== '*' && (
+              <>
+                <a>
+                  <EditOutlined
+                    onClick={() => {
+                      openEditRoleForm(record)
+                    }}
+                  />
+                </a>
+                <a>
+                  <DeleteOutlined onClick={() => console.log(id)} />
+                </a>
+              </>
+            )}
           </Space>
         )
       }
@@ -92,10 +138,28 @@ const Role: React.FC = () => {
           }}
           reload
           getData={getList}
-          addFun={() => console.log('add')}
+          addFun={() => {
+            setFormModal(prevState => ({
+              ...prevState,
+              open: true,
+              title: '新增角色'
+            }))
+          }}
           deleteFun={values => console.log(values)}
         />
       </View>
+      <Modal
+        title={formModal.title}
+        maskClosable={false}
+        open={formModal.open}
+        onOk={submit}
+        confirmLoading={formModal.loading}
+        onCancel={() => setFormModal(initFormModal)}
+        destroyOnClose={true}>
+        {formModal.open && (
+          <RoleForm onRef={roleFormRef} initialValues={formModal.initValues} />
+        )}
+      </Modal>
     </div>
   )
 }

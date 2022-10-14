@@ -10,7 +10,7 @@ import {
 import styles from './index.module.scss'
 import classnames from 'classnames'
 import useStore, { MyState } from '@/store'
-import { WINDOW_OPEN_WITH, IMAGE_TYPE } from '@/common/constants'
+import windowOpenConfig from '@utils/windowOpenConfig'
 
 const RightMouseMenu: React.FC = () => {
   const rightMouseMenu = useStore((state: MyState) => state.rightMouseMenu)
@@ -57,7 +57,11 @@ const RightMouseMenu: React.FC = () => {
         </div>
         <div className={styles.keyboard}>F5</div>
       </div>
-      <div className={styles.item}>
+      <div
+        className={styles.item}
+        onClick={() => {
+          openWindow(windowOpenConfig.systemSet)
+        }}>
         <div className={styles.name}>
           <div className={styles.icon}>
             <SettingOutlined />
@@ -65,7 +69,11 @@ const RightMouseMenu: React.FC = () => {
           设置
         </div>
       </div>
-      <div className={styles.item}>
+      <div
+        className={styles.item}
+        onClick={() => {
+          openWindow(windowOpenConfig.userinfo)
+        }}>
         <div className={styles.name}>
           <div className={styles.icon}>
             <UserOutlined />
@@ -76,18 +84,7 @@ const RightMouseMenu: React.FC = () => {
       <div
         className={styles.item}
         onClick={() => {
-          openWindow({
-            id: 9999,
-            title: '背景设置',
-            image: {
-              type: IMAGE_TYPE.ANTD,
-              name: 'PictureOutlined'
-            },
-            openWith: {
-              type: WINDOW_OPEN_WITH.COMPONENT,
-              name: 'backgroundSet'
-            }
-          })
+          openWindow(windowOpenConfig.backgroundSet)
         }}>
         <div className={styles.name}>
           <div className={styles.icon}>

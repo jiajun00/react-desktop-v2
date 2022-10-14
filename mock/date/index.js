@@ -46,6 +46,65 @@ const userInfo = Mock.mock({
   }
 })
 
+const privilegesData = [
+  {
+    title: 'parent 1',
+    key: 1,
+    pid: '0',
+    children: [
+      {
+        title: 'parent 1-0',
+        key: 2,
+        pid: '0-0',
+        children: [
+          { title: 'leaf', key: 3, pid: '0-0-0' },
+          {
+            title: 'multiple',
+            pid: '0-0-0',
+            key: 4
+          },
+          { title: 'leaf', key: 5, pid: '0-0-0' }
+        ]
+      },
+      {
+        title: 'parent 1-1',
+        key: 6,
+        pid: '0-0',
+        children: [{ title: 'leaf', key: 7, pid: '0-0-1' }]
+      },
+      {
+        title: 'parent 1-2',
+        key: 8,
+        pid: '0-0',
+        children: [
+          { title: 'leaf', key: 9, pid: '0-0-2' },
+          {
+            title: 'leaf',
+            pid: '0-0-2',
+            key: 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'parent 2',
+    key: 11,
+    pid: '0',
+    children: [
+      {
+        title: 'parent 2-0',
+        key: 12,
+        pid: '0-1',
+        children: [
+          { title: 'leaf', key: 13, pid: '0-1-0' },
+          { title: 'leaf', key: 14, pid: '0-1-0' }
+        ]
+      }
+    ]
+  }
+]
+
 const roleList = Mock.mock({
   "current": 1,
   "totalPage": 5,
@@ -97,12 +156,12 @@ const roleList = Mock.mock({
       "roleName": "部门经理",
       "privileges": [
         {
-          id: 1,
+          id: 4,
           name: '权限管理',
           pid: 0
         },
         {
-          id: 2,
+          id: 5,
           name: '角色管理',
           pid: 0
         }
@@ -113,12 +172,12 @@ const roleList = Mock.mock({
       "roleName": "员工1",
       "privileges": [
         {
-          id: 1,
+          id: 4,
           name: '权限管理',
           pid: 0
         },
         {
-          id: 2,
+          id: 5,
           name: '角色管理',
           pid: 0
         }
@@ -129,12 +188,12 @@ const roleList = Mock.mock({
       "roleName": "员工3",
       "privileges": [
         {
-          id: 1,
+          id: 7,
           name: '权限管理',
           pid: 0
         },
         {
-          id: 2,
+          id: 8,
           name: '角色管理',
           pid: 0
         }
@@ -143,7 +202,9 @@ const roleList = Mock.mock({
   ]
 })
 
+
 module.exports = {
   userInfo,
+  privilegesData,
   roleList
 }
