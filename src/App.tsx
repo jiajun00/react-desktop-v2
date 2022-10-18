@@ -2,9 +2,9 @@ import React from 'react'
 import { Spin } from 'antd'
 import styles from './App.module.scss'
 import { Routes, Route } from 'react-router-dom'
+import getToken from '@utils/getToken'
 import Desktop from './pages/desktop'
 import Apps from './pages/apps'
-import getToken from '@utils/getToken'
 import Login from './pages/login'
 
 function App() {
